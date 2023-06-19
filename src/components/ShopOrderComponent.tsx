@@ -11,12 +11,19 @@ export interface ShopOrderComponentProps {
 }
 
 const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
-  const [selectedItem, setSelectedItem] = useState<Product | null>();
-  const [amount, setAmount] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(0);
 
   const onProductChange = (product: Product | null) => {
     setSelectedItem(product);
-    setAmount(0);
+    setQuantity(0);
+  };
+
+  const addToCart = () => {
+    // add current product in current quantity to cart
+
+    setSelectedItem(null);
+    setQuantity(0);
   };
 
   return (
@@ -34,35 +41,37 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
       />
 
       <div>
-        <h3>Amount</h3>
-        <Slider
-          aria-label="amount"
-          value={amount}
-          onChange={(evt, value) => setAmount(value as number)}
-          max={selectedItem?.maxAmount}
-          min={0}
-          defaultValue={0}
-          valueLabelDisplay="auto"
-          disabled={selectedItem === null}
-          sx={{
-            width: '100px',
-          }}
-        />
+        <label className="flex flex-col text-gray-600">
+          Quantity
+          <Slider
+            aria-label="quantity"
+            value={quantity}
+            onChange={(evt, value) => setQuantity(value as number)}
+            max={selectedItem?.maxAmount}
+            min={0}
+            defaultValue={0}
+            valueLabelDisplay="auto"
+            disabled={selectedItem === null}
+            sx={{
+              width: '100px',
+            }}
+          />
+        </label>
       </div>
 
       <div className="flex flex-row items-center gap-4">
         <input
           type="text"
-          className="h-12 w-12 border-gray-400 border-[1.5px] rounded-sm pl-4 hover:border-gray-500 bg-transparent"
-          value={selectedItem ? amount : 0}
+          className="h-12 w-14 border-gray-400 border-[1.5px] rounded-sm px-3 hover:border-gray-500 bg-transparent"
+          value={selectedItem ? quantity : 0}
         />
         <p className="tracking-wide">{selectedItem ? `x ${selectedItem.price}€` : ''}</p>
-        <p>{selectedItem && `= ${(selectedItem.price * amount).toFixed(2)}€`}</p>
+        <p>{selectedItem && `= ${(selectedItem.price * quantity).toFixed(2)}€`}</p>
       </div>
 
       <button
         className="rounded-sm bg-blue-500 text-white p-4 hover:bg-blue-400 disabled:bg-gray-400 font-bold"
-        disabled={selectedItem === null || amount <= 0}
+        disabled={selectedItem === null || quantity <= 0}
       >
         Add to Cart
       </button>
