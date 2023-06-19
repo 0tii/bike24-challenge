@@ -13,21 +13,26 @@ I organized this project using a Trello board in a Scrumban style. I have made t
 
 ## Technologies
 
-This project uses NextJS, and subsequently React, as its primary framework. As this project uses the most recent version of NextJS, it is working with the new App Router that is just out of Beta.
+This project uses NextJS, and subsequently React, as its primary framework. Although the most current version of NextJs recommends the new App Router as it's now stable, this project will use the traditional Pages/ Routing, as the App Router has mostly not been adopted yet and this project being time-limited.
 
 ### Project structure
 
 ### Dependencies
 
+| Dependency       | Reasoning                                                                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| MUI Autocomplete | Arguably the best Combobox available. Not only are MUI Components consistent and visually pleasing, they put an emphasis on accessibility, too. |
+
 ### Container interaction
 
 This project uses Makefile to abstract away some of the `docker-compose` commands:
-|Command |Effect |
-|---|---|
-|make build |Build the container |
-|make up |Start the container |
-|make cli |Enter container CLI |
-|make down |Stop container |
+
+| Command    | Effect              |
+| ---------- | ------------------- |
+| make build | Build the container |
+| make up    | Start the container |
+| make cli   | Enter container CLI |
+| make down  | Stop container      |
 
 ### SSR
 
