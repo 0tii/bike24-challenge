@@ -52,3 +52,7 @@ This project leverages multiple methods of aiding in homogenous and predictable 
 |Prettier |Code formatting rules to enforce homogenous code appearance between team members |
 
 ## Deployment to the Cloud
+
+## Pitfalls
+
+Of course there were some pitfalls implemented into the requirement. One of them being duplicate product names. Since product names can be identical between different products, the product id was used to differentiate between products.

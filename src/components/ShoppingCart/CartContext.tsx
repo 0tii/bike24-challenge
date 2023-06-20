@@ -39,6 +39,8 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       cartCopy[itemIndex].quantity += quantity;
       setCartItems(cartCopy);
     }
+
+    saveCart();
   };
 
   const removeFromCart = (itemId: string) => {
