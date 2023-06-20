@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bike24 Frontend Challenge
 
-## Getting Started
+##### by Daniel Rauhut
 
-First, run the development server:
+## Scope of functions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The user is presented a shop page with an option to select a product and amount which he can add to his shopping cart. Each product has a maximum amount that can be purchased, which can not be exceeded.
+The user can navigate to his shopping cart, review and change their order and continue to checkout into limbo.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Organization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+I organized this project using a Trello board in a Scrumban style. I have made the board public: [Trello Orga Board](https://trello.com/invite/b/TMoec0Zp/ATTI5307547e302d5a34ec4620468ff2c7b6F2FAC534/tech-challenge-frontend)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies
 
-## Learn More
+This project uses NextJS, and subsequently React, as its primary framework. Although the most current version of NextJs recommends the new App Router as it's now stable, this project will use the traditional Pages/ Routing, as the App Router has mostly not been adopted yet and this project being time-limited.
 
-To learn more about Next.js, take a look at the following resources:
+I thought about using Redux to manage shopping cart state globally, but I decided that for this rather small project, a Context would suffice.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Dependencies
 
-## Deploy on Vercel
+| Dependency       | Reasoning                                                                                                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MUI Autocomplete | Arguably the best Combobox available. Not only are MUI Components consistent and visually pleasing, they put an emphasis on accessibility, too. Also, don't reinvent the wheel! |
+| MUI Slider       | One of the best free Slider components available. It also integrates well visually with other MUI Components (Autocomplete). Also, don't reinvent the wheel!                    |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Container interaction
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project uses Makefile to abstract away some of the `docker-compose` commands:
+
+| Command    | Effect              |
+| ---------- | ------------------- |
+| make build | Build the container |
+| make up    | Start the container |
+| make cli   | Enter container CLI |
+| make down  | Stop container      |
+
+If time suffices, I will also provide a PS equivalent for windows users.
+
+### SSR
+
+### Testing
+
+### Code Quality
+
+This project leverages multiple methods of aiding in homogenous and predictable code quality
+|Tool |Advantage |
+|---|---|
+|ESLint |Linting according to specific rules to enforce homogenous development between team members |
+|Prettier |Code formatting rules to enforce homogenous code appearance between team members |
+
+## Deployment to the Cloud
