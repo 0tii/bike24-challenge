@@ -11,24 +11,20 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
   const shoppingCart = useContext(CartContext);
 
   return (
-    <div className="flex text-sm sm:text-base flex-row sm:gap-8 bg-slate-300 rounded-md sm:justify-between p-3 mt-2 items-center">
-      <p className="w-[40%]">{product.productName}</p>
-      <div className="flex flex-row flex-1 justify-between items-center">
-        <p>{quantity} x</p>
-        <p className="ml-3 sm:ml-0">{product.price}€</p>
-
-        <div className="flex flex-row gap-4 items-center">
-          <p className="ml-3 sm:ml-0">
-            <b>{(quantity * product.price).toFixed(2)}€</b>
-          </p>
-
-          <button
-            className="p-3  bg-red-500 rounded-md text-sm text-white ml-4"
-            onClick={() => shoppingCart?.removeFromCart(product.id)}
-          >
-            ✘
-          </button>
-        </div>
+    <div className="grid grid-cols-[40%_auto] text-sm sm:text-base bg-slate-300 rounded-md p-3 mt-2">
+      <span>{product.productName}</span>
+      <div className="flex flex-row flex-1 justify-between">
+        <span>{quantity}</span>
+        <span>{product.price}€</span>
+        <span>
+          <b>{(quantity * product.price).toFixed(2)}€</b>
+        </span>
+        <button
+          className="bg-red-500 rounded-md text-sm text-white ml-4 w-7 h-7"
+          onClick={() => shoppingCart?.removeFromCart(product.id)}
+        >
+          ✘
+        </button>
       </div>
     </div>
   );
