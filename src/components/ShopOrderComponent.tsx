@@ -37,7 +37,7 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-6 items-center w-full max-w-4xl">
+    <div className="flex flex-col sm:flex-row gap-6 items-center w-full">
       <div className="w-full min-w-[30%]">
         <Autocomplete
           aria-label="searchbox"

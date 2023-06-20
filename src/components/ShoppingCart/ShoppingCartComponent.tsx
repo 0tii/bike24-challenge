@@ -1,5 +1,5 @@
 import { Product } from '@/types/OrderTypes';
-import { useCallback, useContext } from 'react';
+import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import CartItem from './CartItem';
 
@@ -17,9 +17,25 @@ const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
 
   return (
     <>
-      {shoppingCart?.cartItems.map((item) => (
-        <CartItem key={item.product.id} product={item.product} quantity={item.quantity} />
-      ))}
+      <div>
+        {shoppingCart?.cartItems.map((item) => (
+          <CartItem key={item.product.id} product={item.product} quantity={item.quantity} />
+        ))}
+      </div>
+      <div>
+        <h2>Progressbar</h2>
+      </div>
+      <div className="flex flex-row justify-between">
+        <button
+          className="bg-gray-400 text-white rounded-md p-3"
+          onClick={() => shoppingCart?.clearCart()}
+        >
+          Clear
+        </button>
+        <button className="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-400 disabled:bg-gray-400 font-bold w-full max-w-[150px]">
+          Checkout
+        </button>
+      </div>
     </>
   );
 };

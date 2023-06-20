@@ -10,7 +10,7 @@ export interface ShopProps {
 
 export default function Shop({ products }: ShopProps) {
   return (
-    <main className="p-8 flex flex-col gap-8">
+    <main className="p-2 sm:p-8 flex flex-col gap-8 max-w-4xl">
       <ShopOrderComponent products={products} />
       <ShoppingCartComponent />
     </main>
