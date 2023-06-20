@@ -92,10 +92,10 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
         />
         {selectedProduct && (
           <>
-            <p>x</p>
-            <p>{`${selectedProduct?.price}€`}</p>
-            <p>=</p>
-            <p>{`${((selectedProduct?.price || 0) * quantity).toFixed(2)}€`}</p>
+            <span>x</span>
+            <span>{`${selectedProduct?.price}€`}</span>
+            <span>=</span>
+            <span>{`${((selectedProduct?.price || 0) * quantity).toFixed(2)}€`}</span>
           </>
         )}
       </div>

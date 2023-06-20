@@ -14,6 +14,7 @@ export interface CartContextType {
   clearCart: () => void;
   modifyItem: (itemId: string, newQuantity: number) => void;
   loadCart: () => void;
+  calculateSum: () => string;
 }
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -41,6 +42,14 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
 
     saveCart();
+  };
+
+  const calculateSum = () => {
+    return cartItems
+      .reduce((sum, currentObject) => {
+        return sum + currentObject.product.price * currentObject.quantity;
+      }, 0)
+      .toFixed(2);
   };
 
   const removeFromCart = (itemId: string) => {
@@ -89,6 +98,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     clearCart,
     modifyItem,
     loadCart,
+    calculateSum,
   };
 
   return <CartContext.Provider value={cartContextValue}>{children}</CartContext.Provider>;
