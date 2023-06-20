@@ -9,7 +9,7 @@ export interface CartEntry {
 
 export interface CartContextType {
   cartItems: CartEntry[];
-  addToCart: (item: Product, quantity: number) => boolean;
+  addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (itemId: string) => void;
   clearCart: () => void;
   modifyItem: (itemId: string, newQuantity: number) => void;
@@ -21,17 +21,33 @@ export const CartContext = createContext<CartContextType | null>(null);
 export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cartItems, setCartItems] = useState<CartEntry[]>([]);
 
-  const addToCart = (item: Product, quantity: number) => {
+  /**
+   * @throws Cart is full, Quantity exceeds allowed limit
+   */
+  const addToCart = (product: Product, quantity: number) => {
     if (cartItems.length >= constants.MAX_CART_ITEMS) throw 'The cart is full.';
 
-    setCartItems((prevItems) => [...prevItems, { product: item, quantity: quantity }]);
-    return true;
+    const itemIndex = cartItems.findIndex((item) => item.product.id === product.id);
+
+    if (itemIndex === -1) {
+      setCartItems((prevItems) => [...prevItems, { product: product, quantity: quantity }]);
+    } else {
+      const cartCopy = [...cartItems];
+      if (cartCopy[itemIndex].quantity + quantity > product.maxAmount)
+        throw 'Total quantity for this product exceeds allowed limit';
+
+      cartCopy[itemIndex].quantity += quantity;
+      setCartItems(cartCopy);
+    }
   };
 
   const removeFromCart = (itemId: string) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.product.id !== itemId));
   };
 
+  /**
+   * @throws Item could not be found
+   */
   const modifyItem = (itemId: string, newQuantity: number) => {
     const cartCopy = [...cartItems];
     const targetIndex = cartCopy.findIndex((item) => item.product.id === itemId);
@@ -50,6 +66,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     localStorage.setItem('cart', Buffer.from(JSON.stringify(cartItems), 'utf8').toString('base64'));
   };
 
+  /**
+   * @throws No cart available, Could not deserialize cart items
+   */
   const loadCart = () => {
     const b64 = localStorage.getItem('cart');
     if (!b64) throw 'No cart available.';
