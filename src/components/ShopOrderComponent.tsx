@@ -47,6 +47,7 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
       <div className="w-full min-w-[30%]">
         <Autocomplete
           aria-label="searchbox"
+          data-testid="autocomplete"
           options={products}
           disablePortal
           renderInput={(params) => <TextField {...params} label="Select a Product" />}

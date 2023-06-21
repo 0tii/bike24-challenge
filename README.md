@@ -26,6 +26,8 @@ I thought about using Redux to manage shopping cart state globally, but I decide
 | MUI Autocomplete | Arguably the best Combobox available. Not only are MUI Components consistent and visually pleasing, they put an emphasis on accessibility, too. Also, don't reinvent the wheel! |
 | MUI Slider       | One of the best free Slider components available. It also integrates well visually with other MUI Components (Autocomplete). Also, don't reinvent the wheel!                    |
 | React Toastify   | A very capable notification library that is easy to use and set up, reinventing the wheel, especially for notifications, would be a huge time eater.                            |
+| Jest             | Arguably the most prominent testing library for frontend unit tests in the JS/TS environment.                                                                                   |
+| @testing-library | Jest without it would not be the same!                                                                                                                                          |
 
 ### Container interaction
 
