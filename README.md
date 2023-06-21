@@ -46,6 +46,22 @@ If time suffices, I will also provide a PS equivalent for windows users.
 
 ### Testing
 
+As is common, `jest` is used in conjunction with `@testing-library` to create unit tests for components. I added a handful of tests of varying dimension and intricacy.
+
+To run these tests:
+
+```
+npm run test
+```
+
+or
+
+```
+npm run vtest
+```
+
+for running the test with the `verbose` flag.
+
 ### Code Quality
 
 This project leverages multiple methods of aiding in homogenous and predictable code quality

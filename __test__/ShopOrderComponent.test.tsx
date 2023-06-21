@@ -1,4 +1,4 @@
-import { render, fireEvent, within } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import ShopOrderComponent from '@/components/ShopOrderComponent';
@@ -6,13 +6,13 @@ import { CartContext } from '@/components/ShoppingCart/CartContext';
 
 describe('Shop Order Component', () => {
   it('renders', () => {
-    const container = render(<ShopOrderComponent products={products} />);
+    const container = render(<ShopOrderComponent products={mockProducts} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('enables the slider when a product is selected', () => {
-    const { getByRole, getByTestId } = render(<ShopOrderComponent products={products} />);
+    const { getByRole, getByTestId } = render(<ShopOrderComponent products={mockProducts} />);
 
     const autocomplete = getByTestId('autocomplete');
     const input = getByRole('combobox');
@@ -20,7 +20,7 @@ describe('Shop Order Component', () => {
 
     autocomplete.focus();
 
-    fireEvent.change(input, { target: { value: products[0].productName.slice(0, 4) } });
+    fireEvent.change(input, { target: { value: mockProducts[0].productName.slice(0, 4) } });
     fireEvent.keyDown(autocomplete, { key: 'ArrowDown' });
     fireEvent.keyDown(autocomplete, { key: 'Enter' });
 
@@ -28,7 +28,7 @@ describe('Shop Order Component', () => {
   });
 
   it('does not allow exceeding the max quantity', () => {
-    const { getByRole, getByTestId } = render(<ShopOrderComponent products={products} />);
+    const { getByRole, getByTestId } = render(<ShopOrderComponent products={mockProducts} />);
 
     const autocomplete = getByTestId('autocomplete');
     const input = getByRole('combobox');
@@ -36,11 +36,11 @@ describe('Shop Order Component', () => {
 
     autocomplete.focus();
 
-    fireEvent.change(input, { target: { value: products[0].productName.slice(0, 4) } });
+    fireEvent.change(input, { target: { value: mockProducts[0].productName.slice(0, 4) } });
     fireEvent.keyDown(autocomplete, { key: 'ArrowDown' });
     fireEvent.keyDown(autocomplete, { key: 'Enter' });
 
-    const maxAmount = products[0].maxAmount;
+    const maxAmount = mockProducts[0].maxAmount;
     fireEvent.change(slider, { target: { value: maxAmount + 1 } });
     const updatedValue = Number(slider.getAttribute('aria-valuenow'));
 
@@ -62,7 +62,7 @@ describe('Shop Order Component', () => {
           modifyItem: () => {},
         }}
       >
-        <ShopOrderComponent products={products} />
+        <ShopOrderComponent products={mockProducts} />
       </CartContext.Provider>
     );
 
@@ -72,11 +72,11 @@ describe('Shop Order Component', () => {
 
     autocomplete.focus();
 
-    fireEvent.change(input, { target: { value: products[0].productName.slice(0, 4) } });
+    fireEvent.change(input, { target: { value: mockProducts[0].productName.slice(0, 4) } });
     fireEvent.keyDown(autocomplete, { key: 'ArrowDown' });
     fireEvent.keyDown(autocomplete, { key: 'Enter' });
 
-    const maxAmount = products[0].maxAmount;
+    const maxAmount = mockProducts[0].maxAmount;
     fireEvent.change(slider, { target: { value: maxAmount - 1 } });
 
     const buyButton = getByRole('button', { name: 'add-to-cart-button' });
@@ -84,15 +84,14 @@ describe('Shop Order Component', () => {
 
     expect(buy).toHaveBeenCalledWith(
       expect.objectContaining({
-        productName: products[0].productName,
+        productName: mockProducts[0].productName,
       }),
       2
     );
   });
 });
 
-// dummy products
-const products = [
+const mockProducts = [
   {
     id: '8e3973e3-e43e-4370-bfcc-3b84d72bb77d',
     productName: 'Syrup - Monin, Irish Cream',
