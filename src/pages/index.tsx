@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Product } from '@/types/OrderTypes';
 import ShopOrderComponent from '@/components/ShopOrderComponent';
+import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCartComponent';
 
 export interface ShopProps {
   products: Product[];
@@ -9,8 +10,9 @@ export interface ShopProps {
 
 export default function Shop({ products }: ShopProps) {
   return (
-    <main className="p-24">
+    <main className="p-2 sm:p-8 flex flex-col gap-8 max-w-4xl">
       <ShopOrderComponent products={products} />
+      <ShoppingCartComponent />
     </main>
   );
 }
@@ -23,6 +25,7 @@ export function getStaticProps() {
     'utf-8'
   );
   const productList = JSON.parse(jsonFileContent);
+  1;
 
   return {
     props: {
