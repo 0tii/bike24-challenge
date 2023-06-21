@@ -17,3 +17,55 @@ body {
 p {
   color: rgb(66, 66, 66);
 }
+
+@media screen and (max-width: 33em) {
+  table,
+  tbody,
+  tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    padding: 0.5em 2em 1em;
+    position: relative;
+  }
+  tr:nth-child(odd) {
+    background-color: rgb(218, 222, 238);
+  }
+  th::before {
+    content: 'Rechnung: ';
+  }
+  td:nth-child(1)::before {
+    content: 'Product: ';
+    font-weight: 600;
+  }
+  td:nth-child(2)::before {
+    content: 'Quantity: ';
+    font-weight: 600;
+  }
+  td:nth-child(3)::before {
+    content: 'Price: ';
+    font-weight: 600;
+  }
+  td:nth-child(4)::before {
+    content: 'Total: ';
+    font-weight: 600;
+  }
+  td:nth-child(5) {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  tbody th {
+    display: block;
+  }
+  td:nth-child(3) {
+    text-align: left;
+  }
+  td {
+    display: block;
+  }
+}

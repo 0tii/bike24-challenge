@@ -1,8 +1,9 @@
 import { Product } from '@/types/OrderTypes';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext, CartTotals } from './CartContext';
-import CartItem from './CartItem';
 import { constants } from '@/cfg/config';
+import CartItemList from './CartList/CartItemList';
+import CartListTotals from './CartList/CartListTotals';
 
 export interface ShoppingCartItem {
   product: Product;
@@ -14,45 +15,13 @@ export interface ShoppingCartComponentProps {
 }
 
 const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
-  const [priceTotals, setPriceTotals] = useState<CartTotals>();
   const shoppingCart = useContext(CartContext);
-
-  useEffect(() => {
-    if (!shoppingCart?.cartItems) return;
-
-    setPriceTotals(shoppingCart?.calculateTotals());
-  }, [shoppingCart?.cartItems, setPriceTotals, shoppingCart?.calculateTotals]);
 
   return (
     <>
       <div>
-        <ul>
-          {shoppingCart?.cartItems.map((item) => (
-            <li key={item.product.id}>
-              <CartItem product={item.product} quantity={item.quantity} />
-            </li>
-          ))}
-        </ul>
-        <div className="flex flex-row justify-end text-sm sm:text-base bg-slate-300 rounded-md p-3 mt-2">
-          <div>
-            <div className="grid grid-cols-2">
-              <span>Subtotal:</span>
-              <span className="px-2">{priceTotals?.net.toFixed(2)}€</span>
-            </div>
-            <div className="grid grid-cols-2">
-              <span>Tax:</span>
-              <span className="px-2">{priceTotals?.tax.toFixed(2)}€</span>
-            </div>
-            <div className="grid grid-cols-2">
-              <span>
-                <b>Total:</b>
-              </span>
-              <span className="px-2">
-                <b>{priceTotals?.gross.toFixed(2)}€</b>
-              </span>
-            </div>
-          </div>
-        </div>
+        <CartItemList shoppingCart={shoppingCart} />
+        <CartListTotals shoppingCart={shoppingCart} />
       </div>
 
       <div className="flex flex-row justify-between items-end">
