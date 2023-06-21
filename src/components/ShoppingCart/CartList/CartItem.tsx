@@ -2,6 +2,7 @@ import { Product } from '@/types/OrderTypes';
 import { useContext } from 'react';
 import { CartContext } from '../CartContext';
 import TrashBinIcon from '@/svg/TrashBinIcon';
+import { toast } from 'react-toastify';
 
 export interface CartItemProps {
   product: Product;
@@ -22,7 +23,13 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
         <div className="flex justify-end">
           <button
             className="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1"
-            onClick={() => shoppingCart?.removeFromCart(product.id)}
+            onClick={() => {
+              shoppingCart?.removeFromCart(product.id);
+              toast(`Product ${product.productName} removed from cart.`, {
+                type: 'success',
+                autoClose: 1400,
+              });
+            }}
           >
             <TrashBinIcon className="fill-white sm:w-5 sm:h-5 w-4 h-4" />
           </button>

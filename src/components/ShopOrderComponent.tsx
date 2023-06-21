@@ -4,6 +4,7 @@ import { TextField } from '@mui/material';
 import { Slider } from '@mui/material';
 import { useContext, useState } from 'react';
 import { CartContext } from './ShoppingCart/CartContext';
+import { toast } from 'react-toastify';
 
 export interface ShopOrderComponentProps {
   products: Product[];
@@ -29,10 +30,15 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
       setSelectedProduct(null);
       setQuantity(0);
 
-      // TODO success notification
+      toast('The product was added to your cart.', {
+        type: 'success',
+        autoClose: 1400,
+      });
     } catch (err) {
-      // TODO create notification
-      console.warn(err);
+      toast(err as string, {
+        type: 'error',
+        autoClose: 1400,
+      });
     }
   };
 
