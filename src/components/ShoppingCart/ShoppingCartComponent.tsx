@@ -1,6 +1,6 @@
 import { Product } from '@/types/OrderTypes';
-import { useContext } from 'react';
-import { CartContext } from './CartContext';
+import { useContext, useEffect, useState } from 'react';
+import { CartContext, CartTotals } from './CartContext';
 import CartItem from './CartItem';
 import { constants } from '@/cfg/config';
 
@@ -14,18 +14,47 @@ export interface ShoppingCartComponentProps {
 }
 
 const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
+  const [priceTotals, setPriceTotals] = useState<CartTotals>();
   const shoppingCart = useContext(CartContext);
+
+  useEffect(() => {
+    if (!shoppingCart?.cartItems) return;
+
+    setPriceTotals(shoppingCart?.calculateTotals());
+  }, [shoppingCart?.cartItems, setPriceTotals, shoppingCart?.calculateTotals]);
 
   return (
     <>
       <div>
-        {shoppingCart?.cartItems.map((item) => (
-          <CartItem key={item.product.id} product={item.product} quantity={item.quantity} />
-        ))}
-        <span className="float-right">
-          <b>Total: {shoppingCart?.calculateSum()}€</b>
-        </span>
+        <ul>
+          {shoppingCart?.cartItems.map((item) => (
+            <li key={item.product.id}>
+              <CartItem product={item.product} quantity={item.quantity} />
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-row justify-end text-sm sm:text-base bg-slate-300 rounded-md p-3 mt-2">
+          <div>
+            <div className="grid grid-cols-2">
+              <span>Subtotal:</span>
+              <span className="px-2">{priceTotals?.net.toFixed(2)}€</span>
+            </div>
+            <div className="grid grid-cols-2">
+              <span>Tax:</span>
+              <span className="px-2">{priceTotals?.tax.toFixed(2)}€</span>
+            </div>
+            <div className="grid grid-cols-2">
+              <span>
+                <b>Total:</b>
+              </span>
+              <span className="px-2">
+                <b>{priceTotals?.gross.toFixed(2)}€</b>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div className="flex flex-row justify-between items-end">
         <button
           className="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
@@ -39,7 +68,7 @@ const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
             value={shoppingCart?.cartItems.length}
             max={constants.MAX_CART_ITEMS}
           />
-          <button className="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-400 disabled:bg-gray-400 font-bold w-full">
+          <button className="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-600 disabled:bg-gray-400 font-bold w-full">
             Checkout
           </button>
         </div>

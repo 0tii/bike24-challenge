@@ -7,6 +7,12 @@ export interface CartEntry {
   quantity: number;
 }
 
+export interface CartTotals {
+  net: number;
+  gross: number;
+  tax: number;
+}
+
 export interface CartContextType {
   cartItems: CartEntry[];
   addToCart: (product: Product, quantity: number) => void;
@@ -14,7 +20,7 @@ export interface CartContextType {
   clearCart: () => void;
   modifyItem: (itemId: string, newQuantity: number) => void;
   loadCart: () => void;
-  calculateSum: () => string;
+  calculateTotals: () => CartTotals;
 }
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -44,12 +50,23 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     saveCart();
   };
 
-  const calculateSum = () => {
-    return cartItems
-      .reduce((sum, currentObject) => {
-        return sum + currentObject.product.price * currentObject.quantity;
-      }, 0)
-      .toFixed(2);
+  const calculateTotals = () => {
+    let totalNet = 0,
+      totalTax = 0,
+      totalGross = 0;
+
+    cartItems.forEach((i) => {
+      let currentNet = i.product.price / (1 + i.product.taxRate / 100);
+      totalNet += currentNet * i.quantity;
+      totalTax += (i.product.price - currentNet) * i.quantity;
+      totalGross += i.product.price * i.quantity;
+    });
+
+    return {
+      net: totalNet,
+      gross: totalGross,
+      tax: totalTax,
+    };
   };
 
   const removeFromCart = (itemId: string) => {
@@ -98,7 +115,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     clearCart,
     modifyItem,
     loadCart,
-    calculateSum,
+    calculateTotals,
   };
 
   return <CartContext.Provider value={cartContextValue}>{children}</CartContext.Provider>;
