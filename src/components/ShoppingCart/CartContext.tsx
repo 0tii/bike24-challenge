@@ -56,10 +56,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       totalGross = 0;
 
     cartItems.forEach((i) => {
-      let currentNet = i.product.price / (1 + i.product.taxRate / 100);
-      totalNet += currentNet * i.quantity;
-      totalTax += (i.product.price - currentNet) * i.quantity;
-      totalGross += i.product.price * i.quantity;
+      let currentTax = ((i.product.price * i.product.taxRate) / 100) * i.quantity;
+      totalNet += i.product.price * i.quantity;
+      totalTax += currentTax;
+      totalGross += i.product.price * i.quantity + currentTax;
     });
 
     return {

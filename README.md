@@ -55,4 +55,6 @@ This project leverages multiple methods of aiding in homogenous and predictable 
 
 ## Pitfalls
 
-Of course there were some pitfalls implemented into the requirement. One of them being duplicate product names. Since product names can be identical between different products, the product id was used to differentiate between products.
+Of course there were some pitfalls implemented into the requirement. One of them being duplicate product names. Since product names can be identical between different products, the product id was used to differentiate between products, as identical names are a 'to be expected' edge case.
+
+Additionally, the taxRate provided should be used to calculate the gross amount. When looking at BIKE24 web shop, we see that for private customers, the tax is included in the unit price. However, in this scenario, the tax has to be added to the unit price and therefore increases the total gross price, as opposed to being included.
