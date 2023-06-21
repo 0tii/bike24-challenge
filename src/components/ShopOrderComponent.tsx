@@ -60,7 +60,11 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
           getOptionLabel={(e) => e.productName}
           onChange={(evt, value) => onProductChange(value)}
           value={selectedProduct || null}
-          sx={{ display: 'flex', width: '100%' }}
+          sx={{
+            display: 'flex',
+            width: '100%',
+            borderRadius: '6px',
+          }}
         />
       </div>
 
@@ -81,7 +85,6 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
             disabled={selectedProduct === null}
             sx={{
               display: 'flex',
-              borderRadius: '6px',
             }}
           />
         </label>
