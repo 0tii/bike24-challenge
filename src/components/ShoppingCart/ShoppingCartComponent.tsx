@@ -18,6 +18,22 @@ export interface ShoppingCartComponentProps {
 const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
   const shoppingCart = useContext(CartContext);
 
+  const onClear = () => {
+    if (!shoppingCart || shoppingCart.cartItems.length === 0) {
+      toast('The shopping cart is already empty.', {
+        type: 'error',
+        autoClose: 1400,
+      });
+      return;
+    }
+
+    shoppingCart?.clearCart();
+    toast('Shopping cart cleared.', {
+      type: 'success',
+      autoClose: 1400,
+    });
+  };
+
   return (
     <>
       <div>
@@ -28,21 +44,7 @@ const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
       <div className="flex flex-row justify-between items-end">
         <button
           className="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
-          onClick={() => {
-            if (!shoppingCart || shoppingCart.cartItems.length === 0) {
-              toast('The shopping cart is already empty.', {
-                type: 'error',
-                autoClose: 1400,
-              });
-              return;
-            }
-
-            shoppingCart?.clearCart();
-            toast('Shopping cart cleared.', {
-              type: 'success',
-              autoClose: 1400,
-            });
-          }}
+          onClick={onClear}
         >
           Clear
         </button>
