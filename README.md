@@ -46,7 +46,7 @@ If time suffices, I will also provide a PS equivalent for windows users.
 
 ### Testing
 
-As is common, `jest` is used in conjunction with `@testing-library` to create unit tests for components. I added a handful of tests of varying dimension and intricacy.
+As is common, `jest` is used in conjunction with `@testing-library` to create unit tests for components. I added a handful of unit tests of varying dimension and intricacy, as well as one integration test between the shop order component and the shopping cart.
 
 To run these tests:
 
@@ -61,6 +61,8 @@ npm run vtest
 ```
 
 for running the test with the `verbose` flag.
+
+For this challenge, getting 100% coverage was not the goal, and would be needlessly time consuming for the scope of this project.
 
 ### Code Quality
 

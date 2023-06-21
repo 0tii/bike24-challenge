@@ -73,6 +73,7 @@ exports[`Shopping Cart Component renders 1`] = `
                   class="flex justify-end"
                 >
                   <button
+                    aria-label="delete button"
                     class="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1"
                   >
                     <svg
@@ -118,6 +119,7 @@ exports[`Shopping Cart Component renders 1`] = `
                   class="flex justify-end"
                 >
                   <button
+                    aria-label="delete button"
                     class="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1"
                   >
                     <svg
@@ -182,6 +184,7 @@ exports[`Shopping Cart Component renders 1`] = `
         class="flex flex-row justify-between items-end"
       >
         <button
+          aria-label="clear cart button"
           class="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
         >
           Clear
@@ -190,11 +193,13 @@ exports[`Shopping Cart Component renders 1`] = `
           class=" w-full max-w-[150px]"
         >
           <progress
+            aria-label="product count progress bar"
             class="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
             max="10"
             value="2"
           />
           <button
+            aria-label="checkout button"
             class="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-600 disabled:bg-gray-400 font-bold w-full"
           >
             Checkout
@@ -272,6 +277,7 @@ exports[`Shopping Cart Component renders 1`] = `
                 class="flex justify-end"
               >
                 <button
+                  aria-label="delete button"
                   class="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1"
                 >
                   <svg
@@ -317,6 +323,7 @@ exports[`Shopping Cart Component renders 1`] = `
                 class="flex justify-end"
               >
                 <button
+                  aria-label="delete button"
                   class="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1"
                 >
                   <svg
@@ -381,6 +388,7 @@ exports[`Shopping Cart Component renders 1`] = `
       class="flex flex-row justify-between items-end"
     >
       <button
+        aria-label="clear cart button"
         class="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
       >
         Clear
@@ -389,282 +397,13 @@ exports[`Shopping Cart Component renders 1`] = `
         class=" w-full max-w-[150px]"
       >
         <progress
+          aria-label="product count progress bar"
           class="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
           max="10"
           value="2"
         />
         <button
-          class="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-600 disabled:bg-gray-400 font-bold w-full"
-        >
-          Checkout
-        </button>
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
-exports[`Shopping Cart Component renders as expected 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div>
-        <table
-          class="w-full sm:text-base text-sm overflow-x-auto"
-        >
-          <thead
-            class="sm:text-base text-xs"
-          >
-            <tr>
-              <th
-                class="text-start"
-              >
-                Product
-              </th>
-              <th
-                class="text-start max-w-[35px] sm:max-w-auto"
-              >
-                <div
-                  class="whitespace-nowrap truncate w-full"
-                >
-                  Quantity
-                </div>
-              </th>
-              <th
-                class="text-start"
-              >
-                Price
-              </th>
-              <th
-                class="text-start"
-              >
-                Total
-              </th>
-              <th
-                class="text-start"
-              />
-            </tr>
-          </thead>
-          <tbody />
-        </table>
-        <div
-          class="flex flex-row justify-end text-sm sm:text-base bg-gray-200 rounded-sm p-3 mt-2"
-        >
-          <div>
-            <div
-              class="grid grid-cols-2 text-gray-600"
-            >
-              <span>
-                Subtotal:
-              </span>
-              <span
-                class="ml-3 text-end"
-              >
-                €
-              </span>
-            </div>
-            <div
-              class="grid grid-cols-2 text-gray-600"
-            >
-              <span>
-                Tax:
-              </span>
-              <span
-                class="ml-3 text-end"
-              >
-                €
-              </span>
-            </div>
-            <div
-              class="grid grid-cols-2 font-bold"
-            >
-              <span>
-                Gross Total:
-              </span>
-              <span
-                class="ml-3 text-end"
-              >
-                €
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="flex flex-row justify-between items-end"
-      >
-        <button
-          class="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
-        >
-          Clear
-        </button>
-        <div
-          class=" w-full max-w-[150px]"
-        >
-          <progress
-            class="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
-            max="10"
-          />
-          <button
-            class="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-600 disabled:bg-gray-400 font-bold w-full"
-          >
-            Checkout
-          </button>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div>
-      <table
-        class="w-full sm:text-base text-sm overflow-x-auto"
-      >
-        <thead
-          class="sm:text-base text-xs"
-        >
-          <tr>
-            <th
-              class="text-start"
-            >
-              Product
-            </th>
-            <th
-              class="text-start max-w-[35px] sm:max-w-auto"
-            >
-              <div
-                class="whitespace-nowrap truncate w-full"
-              >
-                Quantity
-              </div>
-            </th>
-            <th
-              class="text-start"
-            >
-              Price
-            </th>
-            <th
-              class="text-start"
-            >
-              Total
-            </th>
-            <th
-              class="text-start"
-            />
-          </tr>
-        </thead>
-        <tbody />
-      </table>
-      <div
-        class="flex flex-row justify-end text-sm sm:text-base bg-gray-200 rounded-sm p-3 mt-2"
-      >
-        <div>
-          <div
-            class="grid grid-cols-2 text-gray-600"
-          >
-            <span>
-              Subtotal:
-            </span>
-            <span
-              class="ml-3 text-end"
-            >
-              €
-            </span>
-          </div>
-          <div
-            class="grid grid-cols-2 text-gray-600"
-          >
-            <span>
-              Tax:
-            </span>
-            <span
-              class="ml-3 text-end"
-            >
-              €
-            </span>
-          </div>
-          <div
-            class="grid grid-cols-2 font-bold"
-          >
-            <span>
-              Gross Total:
-            </span>
-            <span
-              class="ml-3 text-end"
-            >
-              €
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="flex flex-row justify-between items-end"
-    >
-      <button
-        class="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
-      >
-        Clear
-      </button>
-      <div
-        class=" w-full max-w-[150px]"
-      >
-        <progress
-          class="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
-          max="10"
-        />
-        <button
+          aria-label="checkout button"
           class="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-600 disabled:bg-gray-400 font-bold w-full"
         >
           Checkout

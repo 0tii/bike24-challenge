@@ -147,7 +147,7 @@ exports[`Shop Order Component renders 1`] = `
         >
           <input
             aria-disabled="true"
-            aria-label="quantity-field"
+            aria-label="quantity field"
             aria-live="polite"
             class="h-12 w-14 border-gray-400 border-[1.5px] rounded-md px-3 hover:border-gray-500 bg-transparent focus:outline-none"
             readonly=""
@@ -159,7 +159,7 @@ exports[`Shop Order Component renders 1`] = `
           class="flex items-center sm:min-w-[150px] max-h-[60px]"
         >
           <button
-            aria-label="add-to-cart-button"
+            aria-label="add to cart button"
             class="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-400 disabled:bg-gray-400 font-bold w-full max-w-[150px]"
             disabled=""
           >
@@ -312,7 +312,7 @@ exports[`Shop Order Component renders 1`] = `
       >
         <input
           aria-disabled="true"
-          aria-label="quantity-field"
+          aria-label="quantity field"
           aria-live="polite"
           class="h-12 w-14 border-gray-400 border-[1.5px] rounded-md px-3 hover:border-gray-500 bg-transparent focus:outline-none"
           readonly=""
@@ -324,7 +324,7 @@ exports[`Shop Order Component renders 1`] = `
         class="flex items-center sm:min-w-[150px] max-h-[60px]"
       >
         <button
-          aria-label="add-to-cart-button"
+          aria-label="add to cart button"
           class="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-400 disabled:bg-gray-400 font-bold w-full max-w-[150px]"
           disabled=""
         >

@@ -26,6 +26,56 @@ describe('Shopping Cart Component', () => {
 
     expect(rows).toHaveLength(mockCartContext.cartItems.length + 1);
   });
+
+  it('removes products from the cart display table on delete-button press', () => {
+    const { getAllByLabelText, getByRole, rerender } = render(
+      <CartContext.Provider value={mockCartContext}>
+        <ShoppingCartComponent />
+      </CartContext.Provider>
+    );
+
+    const previousLength = mockCartContext.cartItems.length;
+
+    const button = getAllByLabelText('delete button')[0];
+    fireEvent.click(button);
+
+    rerender(
+      <CartContext.Provider value={mockCartContext}>
+        <ShoppingCartComponent />
+      </CartContext.Provider>
+    );
+
+    const table = getByRole('table');
+    const rows = within(table).getAllByRole('row');
+
+    expect(rows).toHaveLength(previousLength); // header row counts too
+  });
+
+  it('adds a product to the cart display table when a remote component executes the addToCart function from context', () => {
+    const { getAllByLabelText, getByRole, rerender } = render(
+      <CartContext.Provider value={mockCartContext}>
+        <ShoppingCartComponent />
+      </CartContext.Provider>
+    );
+
+    const table = getByRole('table');
+    const rows = within(table).getAllByRole('row');
+
+    const prevLength = rows.length;
+
+    mockCartContext.addToCart(mockProducts[2], 2);
+
+    rerender(
+      <CartContext.Provider value={mockCartContext}>
+        <ShoppingCartComponent />
+      </CartContext.Provider>
+    );
+
+    const newTable = getByRole('table');
+    const newRows = within(newTable).getAllByRole('row');
+
+    expect(newRows).toHaveLength(prevLength + 1); // header row counts too
+  });
 });
 
 const mockProducts = [
@@ -52,13 +102,21 @@ const mockProducts = [
   },
 ];
 
+const removeFromCartMock = jest.fn((id) => {
+  mockCartContext.cartItems = mockCartContext.cartItems.filter((e) => e.product.id !== id);
+});
+
+const addToCartMock = jest.fn((product, amount) => {
+  mockCartContext.cartItems.push({ product: product, quantity: amount });
+});
+
 const mockCartContext: CartContextType = {
   cartItems: [
     { product: mockProducts[0], quantity: 2 },
     { product: mockProducts[1], quantity: 50 },
   ],
-  addToCart: jest.fn(),
-  removeFromCart: jest.fn(),
+  addToCart: addToCartMock,
+  removeFromCart: removeFromCartMock,
   clearCart: jest.fn(),
   modifyItem: jest.fn(),
   loadCart: jest.fn(),

@@ -29,7 +29,11 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
       <td className="sm:py-2 py-1">{totalPrice}€</td>
       <td className="sm:py-2 py-1">
         <div className="flex justify-end">
-          <button className="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1" onClick={onDelete}>
+          <button
+            className="bg-red-500 hover:bg-red-600 rounded-md sm:p-2 p-1"
+            onClick={onDelete}
+            aria-label="delete button"
+          >
             <TrashBinIcon className="fill-white sm:w-5 sm:h-5 w-4 h-4" />
           </button>
         </div>

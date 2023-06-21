@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import ShopOrderComponent from '@/components/ShopOrderComponent';
-import { CartContext } from '@/components/ShoppingCart/CartContext';
+import { CartContext, CartContextType } from '@/components/ShoppingCart/CartContext';
 
 describe('Shop Order Component', () => {
   it('renders', () => {
@@ -79,7 +79,7 @@ describe('Shop Order Component', () => {
     const maxAmount = mockProducts[0].maxAmount;
     fireEvent.change(slider, { target: { value: maxAmount - 1 } });
 
-    const buyButton = getByRole('button', { name: 'add-to-cart-button' });
+    const buyButton = getByRole('button', { name: 'add to cart button' });
     fireEvent.click(buyButton);
 
     expect(buy).toHaveBeenCalledWith(

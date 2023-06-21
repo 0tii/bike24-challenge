@@ -95,7 +95,7 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
         <input
           aria-disabled
           aria-live="polite"
-          aria-label="quantity-field"
+          aria-label="quantity field"
           type="text"
           className="h-12 w-14 border-gray-400 border-[1.5px] rounded-md px-3 hover:border-gray-500 bg-transparent focus:outline-none"
           value={selectedProduct ? quantity : 0}
@@ -113,7 +113,7 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
 
       <div className="flex items-center sm:min-w-[150px] max-h-[60px]">
         <button
-          aria-label="add-to-cart-button"
+          aria-label="add to cart button"
           className="rounded-md bg-blue-500 text-white p-4 hover:bg-blue-400 disabled:bg-gray-400 font-bold w-full max-w-[150px]"
           disabled={selectedProduct === null || quantity <= 0}
           onClick={addToCart}
