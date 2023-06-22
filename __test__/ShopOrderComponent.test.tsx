@@ -1,6 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 import ShopOrderComponent from '@/components/ShopOrderComponent';
 import { CartContext, CartContextType } from '@/components/ShoppingCart/CartContext';
 

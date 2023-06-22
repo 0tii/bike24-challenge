@@ -6,8 +6,6 @@ import ShopOrderComponent from '@/components/ShopOrderComponent';
 
 describe('Shop Order and Shopping Cart', () => {
   it('adds an item from the shop order to the shopping cart', () => {
-    const buy = jest.fn();
-
     const { getByRole, getByTestId, rerender } = render(
       <CartContext.Provider value={mockCartContext}>
         <ShopOrderComponent products={mockProducts} />
@@ -19,7 +17,6 @@ describe('Shop Order and Shopping Cart', () => {
     const rows = within(table).getAllByRole('row');
 
     // select an item and hit the 'add to cart' button
-
     const autocomplete = getByTestId('autocomplete');
     const input = getByRole('combobox');
     const slider = getByRole('slider');
@@ -36,14 +33,13 @@ describe('Shop Order and Shopping Cart', () => {
     const buyButton = getByRole('button', { name: 'add to cart button' });
     fireEvent.click(buyButton);
 
+    // mock rerender after state update
     rerender(
       <CartContext.Provider value={mockCartContext}>
         <ShopOrderComponent products={mockProducts} />
         <ShoppingCartComponent />
       </CartContext.Provider>
     );
-
-    console.log(mockCartContext.cartItems);
 
     const newTable = getByRole('table');
     const newRows = within(newTable).getAllByRole('row');
