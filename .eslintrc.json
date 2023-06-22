@@ -1,35 +1,3 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
-  },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["react", "react-hooks"],
-  "rules": {
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-uses-react": "off",
-    "react/jsx-uses-vars": "error",
-    "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".js"] }],
-    "import/order": [
-      "error",
-      {
-        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"],
-        "newlines-between": "always"
-      }
-    ]
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+  "extends": ["next/core-web-vitals"]
 }

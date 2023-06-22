@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev -p 3003",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 3003",
+    "lint": "next lint",
+    "test": "jest",
+    "vtest": "jest --verbose --silent=false",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
