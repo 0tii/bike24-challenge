@@ -10,4 +10,8 @@ COPY . .
 
 EXPOSE 3003
 
-CMD npm run dev
+COPY docker/entrypoint.sh /entrypoint.sh
+
+RUN chmod +rwx /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
