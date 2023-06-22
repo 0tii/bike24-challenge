@@ -1,28 +1,28 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import ShopOrderComponent from '@/components/ShopOrderComponent';
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import {
   CartContext,
   CartContextType,
   CartEntry,
   CartProvider,
-} from '@/components/ShoppingCart/CartContext';
-import { useContext, useEffect } from 'react';
-import { Product } from '@/types/OrderTypes';
-import { comment } from 'postcss';
+} from "@/components/ShoppingCart/CartContext";
+import { useContext, useEffect } from "react";
+import { Product } from "@/types/OrderTypes";
 
-describe('The Cart Context', () => {
-  it('should add items to the cart', () => {
+describe("The Cart Context", () => {
+  it("should add items to the cart", () => {
     render(
       <CartProvider>
         <TestComponent product={mockProducts[0]} quantity={1} action="add" />
       </CartProvider>
     );
 
-    expect(screen.getByText(`${mockProducts[0].productName} - ${1}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`${mockProducts[0].productName} - ${1}`)
+    ).toBeInTheDocument();
   });
 
-  it('should remove items from the cart', () => {
+  it("should remove items from the cart", () => {
     // need to add product first
     const { rerender } = render(
       <CartProvider>
@@ -30,7 +30,9 @@ describe('The Cart Context', () => {
       </CartProvider>
     );
 
-    expect(screen.queryByText(`${mockProducts[0].productName} - ${1}`)).not.toBeNull();
+    expect(
+      screen.queryByText(`${mockProducts[0].productName} - ${1}`)
+    ).not.toBeNull();
 
     rerender(
       <CartProvider>
@@ -38,10 +40,12 @@ describe('The Cart Context', () => {
       </CartProvider>
     );
 
-    expect(screen.queryByText(`${mockProducts[0].productName} - ${1}`)).toBeNull();
+    expect(
+      screen.queryByText(`${mockProducts[0].productName} - ${1}`)
+    ).toBeNull();
   });
 
-  it('should modify items in the cart', () => {
+  it("should modify items in the cart", () => {
     // need to add product first
     const { rerender } = render(
       <CartProvider>
@@ -49,7 +53,9 @@ describe('The Cart Context', () => {
       </CartProvider>
     );
 
-    expect(screen.queryByText(`${mockProducts[0].productName} - ${1}`)).not.toBeNull();
+    expect(
+      screen.queryByText(`${mockProducts[0].productName} - ${1}`)
+    ).not.toBeNull();
 
     rerender(
       <CartProvider>
@@ -57,10 +63,12 @@ describe('The Cart Context', () => {
       </CartProvider>
     );
 
-    expect(screen.queryByText(`${mockProducts[0].productName} - ${3}`)).not.toBeNull();
+    expect(
+      screen.queryByText(`${mockProducts[0].productName} - ${3}`)
+    ).not.toBeNull();
   });
 
-  it('can clear the cart', () => {
+  it("can clear the cart", () => {
     // need to add product first
     const { rerender } = render(
       <CartProvider>
@@ -68,7 +76,9 @@ describe('The Cart Context', () => {
       </CartProvider>
     );
 
-    expect(screen.queryByText(`${mockProducts[0].productName} - ${1}`)).not.toBeNull();
+    expect(
+      screen.queryByText(`${mockProducts[0].productName} - ${1}`)
+    ).not.toBeNull();
 
     rerender(
       <CartProvider>
@@ -76,7 +86,9 @@ describe('The Cart Context', () => {
       </CartProvider>
     );
 
-    expect(screen.queryByText(`${mockProducts[0].productName} - ${1}`)).toBeNull();
+    expect(
+      screen.queryByText(`${mockProducts[0].productName} - ${1}`)
+    ).toBeNull();
   });
 
   const TestComponent = ({
@@ -86,23 +98,23 @@ describe('The Cart Context', () => {
   }: {
     product: Product;
     quantity: number;
-    action: 'add' | 'remove' | 'modify' | 'clear';
+    action: "add" | "remove" | "modify" | "clear";
   }) => {
     const { addToCart, removeFromCart, modifyItem, clearCart, cartItems } =
       useContext(CartContext)!;
 
     useEffect(() => {
       switch (action) {
-        case 'add':
+        case "add":
           addToCart(product, quantity);
           break;
-        case 'remove':
+        case "remove":
           removeFromCart(product.id);
           break;
-        case 'modify':
+        case "modify":
           modifyItem(product.id, quantity);
           break;
-        case 'clear':
+        case "clear":
           clearCart();
           break;
       }
@@ -123,22 +135,22 @@ describe('The Cart Context', () => {
 
 const mockProducts = [
   {
-    id: '8e3973e3-e43e-4370-bfcc-3b84d72bb77d',
-    productName: 'Syrup - Monin, Irish Cream',
+    id: "8e3973e3-e43e-4370-bfcc-3b84d72bb77d",
+    productName: "Syrup - Monin, Irish Cream",
     maxAmount: 3,
     taxRate: 7,
     price: 7.76,
   },
   {
-    id: 'e713cc29-9074-49f1-9e9c-d7b340fac027',
-    productName: 'Pie Shells 10',
+    id: "e713cc29-9074-49f1-9e9c-d7b340fac027",
+    productName: "Pie Shells 10",
     maxAmount: 94,
     taxRate: 7,
     price: 9.45,
   },
   {
-    id: '4f6dff49-9731-4bfa-9e67-854238328a80',
-    productName: 'Wine - Trimbach Pinot Blanc',
+    id: "4f6dff49-9731-4bfa-9e67-854238328a80",
+    productName: "Wine - Trimbach Pinot Blanc",
     maxAmount: 17,
     taxRate: 7,
     price: 14.31,
@@ -146,7 +158,9 @@ const mockProducts = [
 ];
 
 const removeFromCartMock = jest.fn((id) => {
-  mockCartContext.cartItems = mockCartContext.cartItems.filter((e) => e.product.id !== id);
+  mockCartContext.cartItems = mockCartContext.cartItems.filter(
+    (e) => e.product.id !== id
+  );
 });
 
 const addToCartMock = jest.fn((product, amount) => {

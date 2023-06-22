@@ -1,10 +1,10 @@
-import { Product } from '@/types/OrderTypes';
-import { useContext, useEffect, useState } from 'react';
-import { CartContext, CartTotals } from './CartContext';
-import { constants } from '@/cfg/config';
-import CartItemList from './CartList/CartItemList';
-import CartListTotals from './CartList/CartListTotals';
-import { toast } from 'react-toastify';
+import { Product } from "@/types/OrderTypes";
+import { useContext, useEffect, useState } from "react";
+import { CartContext, CartTotals } from "./CartContext";
+import { constants } from "@/cfg/config";
+import CartItemList from "./CartList/CartItemList";
+import CartListTotals from "./CartList/CartListTotals";
+import { toast } from "react-toastify";
 
 export interface ShoppingCartItem {
   product: Product;
@@ -20,16 +20,16 @@ const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
 
   const onClear = () => {
     if (!shoppingCart || shoppingCart.cartItems.length === 0) {
-      toast('The shopping cart is already empty.', {
-        type: 'error',
+      toast("The shopping cart is already empty.", {
+        type: "error",
         autoClose: 1400,
       });
       return;
     }
 
     shoppingCart?.clearCart();
-    toast('Shopping cart cleared.', {
-      type: 'success',
+    toast("Shopping cart cleared.", {
+      type: "success",
       autoClose: 1400,
     });
   };
