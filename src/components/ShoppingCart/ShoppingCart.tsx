@@ -5,17 +5,18 @@ import { constants } from '@/cfg/config';
 import CartItemList from './CartList/CartItemList';
 import CartListTotals from './CartList/CartListTotals';
 import { toast } from 'react-toastify';
+import ClearShoppingCartIcon from '@/svg/ClearShoppingCartIcon';
 
 export interface ShoppingCartItem {
   product: Product;
   quantity: number;
 }
 
-export interface ShoppingCartComponentProps {
+interface ShoppingCartProps {
   // ...
 }
 
-const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
+const ShoppingCart = ({}: ShoppingCartProps) => {
   const shoppingCart = useContext(CartContext);
 
   const onClear = () => {
@@ -36,10 +37,15 @@ const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
 
   return (
     <>
-      <div>
-        <CartItemList shoppingCart={shoppingCart} />
-        <CartListTotals shoppingCart={shoppingCart} />
-      </div>
+      <h2 className="my-3 font-bold text-4xl">Your orders</h2>
+      <CartItemList shoppingCart={shoppingCart} />
+      {shoppingCart?.cartItems.length === 0 && (
+        <div className="flex flex-col items-center my-8 text-gray-300 font-bold text-[2rem]">
+          <span>Add products first</span>
+          <ClearShoppingCartIcon className="fill-gray-300 h-24 w-24" />
+        </div>
+      )}
+      <CartListTotals shoppingCart={shoppingCart} />
 
       <div className="flex flex-row justify-between items-end">
         <button
@@ -68,4 +74,4 @@ const ShoppingCartComponent = ({}: ShoppingCartComponentProps) => {
   );
 };
 
-export default ShoppingCartComponent;
+export default ShoppingCart;

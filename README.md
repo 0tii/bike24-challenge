@@ -117,6 +117,12 @@ Of course there were some pitfalls implemented into the requirement. One of them
 
 Additionally, the taxRate provided should be used to calculate the gross amount. When looking at BIKE24 web shop, we see that for private customers, the tax is included in the unit price. However, in this scenario, the tax has to be added to the unit price and therefore increases the total gross price, as opposed to being included.
 
+## Shortcomings
+
+I want to use this dedicated little section to once explicitly mention, that I am not a designer, which probably reflects in the visual appearance of my web shop. However, I do like to translate designs to proper frontends (duh).
+
 ## Bonus
 
 The cart is serialized, persisted in localstorage and will be deserialized on page load.
+
+For the short time limit this project entailed, decent responsivity in the design is given.

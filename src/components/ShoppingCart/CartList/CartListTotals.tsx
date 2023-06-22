@@ -15,7 +15,7 @@ export const CartListTotals = ({ shoppingCart }: CartListTotalsProps) => {
   }, [shoppingCart?.cartItems, setPriceTotals, shoppingCart?.calculateTotals, shoppingCart]);
 
   return (
-    <div className="flex flex-row justify-end text-sm sm:text-base bg-gray-200 rounded-sm p-3 mt-2">
+    <div className="flex flex-row justify-end text-sm sm:text-base bg-gray-100 rounded-sm p-3 my-4">
       <div>
         <div className="grid grid-cols-2 text-gray-600">
           <span>Subtotal:</span>

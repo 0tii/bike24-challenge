@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { Product } from '@/types/OrderTypes';
-import ShopOrderComponent from '@/components/ShopOrderComponent';
-import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCartComponent';
+import ShopOrder from '@/components/ShopOrder';
 import { CartContext } from '@/components/ShoppingCart/CartContext';
 import { useContext, useEffect } from 'react';
+import Head from 'next/head';
+import CartDisplay from '@/components/ShoppingCart/CartDisplay';
 
 export interface ShopProps {
   products: Product[];
@@ -22,10 +23,16 @@ export default function Shop({ products }: ShopProps) {
   }, []);
 
   return (
-    <main className="p-2 sm:p-8 flex flex-col gap-8 max-w-4xl">
-      <ShopOrderComponent products={products} />
-      <ShoppingCartComponent />
-    </main>
+    <>
+      <Head>
+        <title>Rauhut24 Shop</title>
+        <meta name="description" content="BIKE24 Challenge" />
+        <meta name="keywords" content="shop, cart" />
+      </Head>
+      <main className="p-2 sm:p-8 flex flex-col gap-8 max-w-4xl">
+        <ShopOrder className="mt-8" products={products} />
+      </main>
+    </>
   );
 }
 
