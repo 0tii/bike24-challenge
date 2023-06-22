@@ -1,7 +1,7 @@
 import { render, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CartContext, CartContextType } from '@/components/ShoppingCart/CartContext';
-import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCartComponent';
+import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCart';
 
 describe('Shopping Cart Component', () => {
   it('renders', () => {

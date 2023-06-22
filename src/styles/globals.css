@@ -18,6 +18,21 @@ p {
   color: rgb(66, 66, 66);
 }
 
+@media screen and (width > 50em) {
+  .slidein {
+    animation: slide-in 0.3s ease-in;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
 @media screen and (max-width: 33em) {
   table,
   tbody,

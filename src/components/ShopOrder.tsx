@@ -2,15 +2,15 @@ import { Product } from '@/types/OrderTypes';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@mui/material';
 import { Slider } from '@mui/material';
-import { useContext, useState } from 'react';
+import { HTMLProps, useContext, useState } from 'react';
 import { CartContext } from './ShoppingCart/CartContext';
 import { toast } from 'react-toastify';
 
-export interface ShopOrderComponentProps {
+export interface ShopOrderProps extends HTMLProps<HTMLDivElement> {
   products: Product[];
 }
 
-const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
+const ShopOrder = ({ products, className, ...props }: ShopOrderProps) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(0);
 
@@ -43,7 +43,7 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-6 items-center w-full">
+    <div {...props} className={`${className} flex flex-col sm:flex-row gap-6 items-center w-full`}>
       <div className="w-full min-w-[30%]">
         <Autocomplete
           aria-label="searchbox"
@@ -69,8 +69,8 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
         />
       </div>
 
-      <div className="w-full px-2">
-        <label className="flex flex-col text-gray-600">
+      <div className="w-[90%] sm:w-full px-2">
+        <label className="text-gray-600">
           Quantity
           <Slider
             aria-valuemin={0}
@@ -84,9 +84,6 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
             defaultValue={0}
             valueLabelDisplay="auto"
             disabled={selectedProduct === null}
-            sx={{
-              display: 'flex',
-            }}
           />
         </label>
       </div>
@@ -125,4 +122,4 @@ const ShopOrderComponent = ({ products }: ShopOrderComponentProps) => {
   );
 };
 
-export default ShopOrderComponent;
+export default ShopOrder;
