@@ -3,12 +3,24 @@ import path from 'path';
 import { Product } from '@/types/OrderTypes';
 import ShopOrderComponent from '@/components/ShopOrderComponent';
 import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCartComponent';
+import { CartContext } from '@/components/ShoppingCart/CartContext';
+import { useContext, useEffect } from 'react';
 
 export interface ShopProps {
   products: Product[];
 }
 
 export default function Shop({ products }: ShopProps) {
+  const context = useContext(CartContext);
+
+  useEffect(() => {
+    try {
+      if (context) context.loadCart();
+    } catch {}
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <main className="p-2 sm:p-8 flex flex-col gap-8 max-w-4xl">
       <ShopOrderComponent products={products} />

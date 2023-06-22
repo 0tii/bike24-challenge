@@ -71,6 +71,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const removeFromCart = (itemId: string) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.product.id !== itemId));
+    saveCart();
   };
 
   /**
@@ -84,13 +85,16 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
     cartCopy[targetIndex].quantity = newQuantity;
     setCartItems(cartCopy);
+    saveCart();
   };
 
   const clearCart = () => {
     setCartItems([]);
+    saveCart(true);
   };
 
-  const saveCart = () => {
+  const saveCart = (clear = false) => {
+    if (clear) return localStorage.removeItem('cart');
     localStorage.setItem('cart', Buffer.from(JSON.stringify(cartItems), 'utf8').toString('base64'));
   };
 
