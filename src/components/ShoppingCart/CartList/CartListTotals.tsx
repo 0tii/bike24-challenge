@@ -12,7 +12,7 @@ export const CartListTotals = ({ shoppingCart }: CartListTotalsProps) => {
     if (!shoppingCart?.cartItems) return;
 
     setPriceTotals(shoppingCart?.calculateTotals());
-  }, [shoppingCart?.cartItems, setPriceTotals, shoppingCart?.calculateTotals]);
+  }, [shoppingCart?.cartItems, setPriceTotals, shoppingCart?.calculateTotals, shoppingCart]);
 
   return (
     <div className="flex flex-row justify-end text-sm sm:text-base bg-gray-200 rounded-sm p-3 mt-2">
