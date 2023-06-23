@@ -21,12 +21,18 @@ export interface CartContextType {
   modifyItem: (itemId: string, newQuantity: number) => void;
   loadCart: () => void;
   calculateTotals: () => CartTotals;
+  orderConfirmation: boolean;
+  setOrderConfirmation: (value: boolean) => void;
+  cartOpen: boolean;
+  setCartOpen: (value: boolean) => void;
 }
 
 export const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cartItems, setCartItems] = useState<CartEntry[]>([]);
+  const [orderConfirmation, setOrderConfirmation] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   /**
    * @throws Cart is full, Quantity exceeds allowed limit
@@ -120,6 +126,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     modifyItem,
     loadCart,
     calculateTotals,
+    orderConfirmation,
+    setOrderConfirmation,
+    cartOpen,
+    setCartOpen,
   };
 
   return <CartContext.Provider value={cartContextValue}>{children}</CartContext.Provider>;

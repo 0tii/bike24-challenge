@@ -110,6 +110,10 @@ const addToCartMock = jest.fn((product, amount) => {
   mockCartContext.cartItems.push({ product: product, quantity: amount });
 });
 
+const setOrderConfirmationMock = jest.fn((val) => (mockCartContext.orderConfirmation = val));
+
+const setCartOpenMock = jest.fn((val) => (mockCartContext.cartOpen = val));
+
 const mockCartContext: CartContextType = {
   cartItems: [
     { product: mockProducts[0], quantity: 2 },
@@ -121,4 +125,8 @@ const mockCartContext: CartContextType = {
   modifyItem: jest.fn(),
   loadCart: jest.fn(),
   calculateTotals: jest.fn(),
+  orderConfirmation: false,
+  setOrderConfirmation: setOrderConfirmationMock,
+  cartOpen: false,
+  setCartOpen: setCartOpenMock,
 };

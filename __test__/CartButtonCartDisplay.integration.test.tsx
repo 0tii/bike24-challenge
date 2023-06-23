@@ -1,50 +1,60 @@
-import { render, fireEvent, within } from '@testing-library/react';
+import { render, fireEvent, within, getByTestId } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CartContext, CartContextType } from '@/components/ShoppingCart/CartContext';
 import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCart';
-import ShopOrderComponent from '@/components/ShopOrder';
+import { CartButton } from '@/components/ShoppingCart/CartButton';
+import CartDisplay from '@/components/ShoppingCart/CartDisplay';
 
-describe('Shop Order and Shopping Cart', () => {
-  it('adds an item from the shop order to the shopping cart', () => {
-    const { getByRole, getByTestId, rerender } = render(
+describe('Shopping Cart Button and Cart Display', () => {
+  it('opens the cart display on button click', () => {
+    const { getByTestId, rerender } = render(
       <CartContext.Provider value={mockCartContext}>
-        <ShopOrderComponent products={mockProducts} />
-        <ShoppingCartComponent />
+        <CartButton />
+        <CartDisplay />
       </CartContext.Provider>
     );
 
-    const table = getByRole('table');
-    const rows = within(table).getAllByRole('row');
+    const cartButton = getByTestId('cart-button');
+    fireEvent.click(cartButton);
 
-    // select an item and hit the 'add to cart' button
-    const autocomplete = getByTestId('autocomplete');
-    const input = getByRole('combobox');
-    const slider = getByRole('slider');
-
-    autocomplete.focus();
-
-    fireEvent.change(input, { target: { value: mockProducts[0].productName.slice(0, 4) } });
-    fireEvent.keyDown(autocomplete, { key: 'ArrowDown' });
-    fireEvent.keyDown(autocomplete, { key: 'Enter' });
-
-    const maxAmount = mockProducts[0].maxAmount;
-    fireEvent.change(slider, { target: { value: maxAmount - 1 } });
-
-    const buyButton = getByRole('button', { name: 'add to cart button' });
-    fireEvent.click(buyButton);
-
-    // mock rerender after state update
     rerender(
       <CartContext.Provider value={mockCartContext}>
-        <ShopOrderComponent products={mockProducts} />
-        <ShoppingCartComponent />
+        <CartButton />
+        <CartDisplay />
       </CartContext.Provider>
     );
 
-    const newTable = getByRole('table');
-    const newRows = within(newTable).getAllByRole('row');
+    const closeCartButton = getByTestId('close-cart-button');
 
-    expect(newRows).toHaveLength(rows.length + 1);
+    expect(closeCartButton).toBeInTheDocument();
+  });
+
+  it('closes the cart display on close-button click', () => {
+    mockCartContext.cartOpen = true;
+
+    const { getByTestId, queryByTestId, rerender } = render(
+      <CartContext.Provider value={mockCartContext}>
+        <CartButton />
+        <CartDisplay />
+      </CartContext.Provider>
+    );
+
+    const closeCartButton = getByTestId('close-cart-button');
+
+    expect(closeCartButton).toBeInTheDocument();
+
+    fireEvent.click(closeCartButton);
+
+    rerender(
+      <CartContext.Provider value={mockCartContext}>
+        <CartButton />
+        <CartDisplay />
+      </CartContext.Provider>
+    );
+
+    const closeCartButtonAfterRerender = queryByTestId('close-cart-button');
+
+    expect(closeCartButtonAfterRerender).not.toBeInTheDocument();
   });
 });
 
@@ -86,15 +96,19 @@ const setCartOpenMock = jest.fn((val) => (mockCartContext.cartOpen = val));
 
 const mockCartContext: CartContextType = {
   cartItems: [
-    { product: mockProducts[1], quantity: 2 },
-    { product: mockProducts[2], quantity: 50 },
+    { product: mockProducts[0], quantity: 2 },
+    { product: mockProducts[1], quantity: 50 },
   ],
   addToCart: addToCartMock,
   removeFromCart: removeFromCartMock,
   clearCart: jest.fn(),
   modifyItem: jest.fn(),
   loadCart: jest.fn(),
-  calculateTotals: jest.fn(),
+  calculateTotals: jest.fn(() => ({
+    net: 0,
+    tax: 0,
+    gross: 0,
+  })),
   orderConfirmation: false,
   setOrderConfirmation: setOrderConfirmationMock,
   cartOpen: false,

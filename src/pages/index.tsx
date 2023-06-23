@@ -6,6 +6,8 @@ import { CartContext } from '@/components/ShoppingCart/CartContext';
 import { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import CheckoutConfirmation from '@/components/ShoppingCart/CheckoutConfirmation';
+import CartDisplay from '@/components/ShoppingCart/CartDisplay';
 
 export interface ShopProps {
   products: Product[];
@@ -29,6 +31,7 @@ export default function Shop({ products }: ShopProps) {
         <meta name="description" content="BIKE24 Challenge" />
         <meta name="keywords" content="shop, cart" />
       </Head>
+
       <main className="flex flex-col items-center w-full">
         <div className="w-full max-w-screen h-[35%] max-h-[200px] sm:max-h-[400px] overflow-hidden flex items-center pt-32">
           <Image
@@ -40,12 +43,19 @@ export default function Shop({ products }: ShopProps) {
             loading="lazy"
           />
         </div>
+
         <div className="flex flex-col items-center px-4 w-full max-w-4xl mt-8 sm:mt-4 min-h-60%">
           <h2 className="mb-6 font-bold text-2xl hidden sm:block">
             Order our high quality products
           </h2>
           <ShopOrder products={products} />
         </div>
+
+        <CartDisplay />
+
+        {context?.orderConfirmation && (
+          <CheckoutConfirmation onConfirm={() => context?.setOrderConfirmation(false)} />
+        )}
       </main>
     </>
   );
