@@ -5,7 +5,7 @@ import ShopOrder from '@/components/ShopOrder';
 import { CartContext } from '@/components/ShoppingCart/CartContext';
 import { useContext, useEffect } from 'react';
 import Head from 'next/head';
-import CartDisplay from '@/components/ShoppingCart/CartDisplay';
+import Image from 'next/image';
 
 export interface ShopProps {
   products: Product[];
@@ -29,8 +29,23 @@ export default function Shop({ products }: ShopProps) {
         <meta name="description" content="BIKE24 Challenge" />
         <meta name="keywords" content="shop, cart" />
       </Head>
-      <main className="p-2 sm:p-8 flex flex-col gap-8 max-w-4xl">
-        <ShopOrder className="mt-8" products={products} />
+      <main className="flex flex-col items-center w-full">
+        <div className="w-full max-w-screen h-[35%] max-h-[200px] sm:max-h-[400px] overflow-hidden flex items-center pt-32">
+          <Image
+            src="/images/icy.jpg"
+            alt="iceberg"
+            width={4032}
+            height={3024}
+            className="w-screen scale-[2.4] sm:scale-100"
+            loading="lazy"
+          />
+        </div>
+        <div className="flex flex-col items-center px-4 w-full max-w-4xl mt-8 sm:mt-4 min-h-60%">
+          <h2 className="mb-6 font-bold text-2xl hidden sm:block">
+            Order our high quality products
+          </h2>
+          <ShopOrder products={products} />
+        </div>
       </main>
     </>
   );
