@@ -1,5 +1,5 @@
 import { Product } from '@/types/OrderTypes';
-import React, { PropsWithChildren, createContext, useState } from 'react';
+import React, { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { constants } from '@/cfg/config';
 
 export interface CartEntry {
@@ -34,6 +34,12 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [orderConfirmation, setOrderConfirmation] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
+  useEffect(() => {
+    if (cartItems.length === 0) saveCart(true);
+    else saveCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartItems]);
+
   /**
    * @throws Cart is full, Quantity exceeds allowed limit
    */
@@ -52,8 +58,6 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       cartCopy[itemIndex].quantity += quantity;
       setCartItems(cartCopy);
     }
-
-    saveCart();
   };
 
   const calculateTotals = () => {
@@ -77,7 +81,6 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const removeFromCart = (itemId: string) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.product.id !== itemId));
-    saveCart();
   };
 
   /**
@@ -91,7 +94,6 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
     cartCopy[targetIndex].quantity = newQuantity;
     setCartItems(cartCopy);
-    saveCart();
   };
 
   const clearCart = () => {
