@@ -25,7 +25,7 @@ export const CartListTotals = ({ shoppingCart }: CartListTotalsProps) => {
           <span>Tax:</span>
           <span className="ml-3 text-end">{priceTotals?.tax.toFixed(2)}€</span>
         </div>
-        <div className="grid grid-cols-2 font-bold">
+        <div className="grid grid-cols-2 font-bold text-gray-800">
           <span>Gross Total:</span>
           <span className="ml-3 text-end">{priceTotals?.gross.toFixed(2)}€</span>
         </div>

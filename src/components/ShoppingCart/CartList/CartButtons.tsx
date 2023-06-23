@@ -35,7 +35,16 @@ export const CartButtons = () => {
       <div className=" w-full max-w-[150px]">
         <progress
           aria-label="product count progress bar"
-          className="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
+          className={`max-w-[150px] 
+            [&::-webkit-progress-bar]:rounded-md 
+            [&::-webkit-progress-value]:rounded-md 
+          [&::-webkit-progress-bar]:bg-slate-300 
+          ${
+            shoppingCart?.cartItems.length === 10
+              ? '[&::-moz-progress-bar]:bg-red-400 [&::-webkit-progress-value]:bg-red-400'
+              : '[&::-moz-progress-bar]:bg-blue-400 [&::-webkit-progress-value]:bg-blue-400'
+          }
+          `}
           value={shoppingCart?.cartItems.length}
           max={constants.MAX_CART_ITEMS}
         />

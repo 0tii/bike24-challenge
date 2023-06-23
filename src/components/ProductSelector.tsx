@@ -88,7 +88,7 @@ const ProductSelector = ({ products, className, ...props }: ProductSelectorProps
         </label>
       </div>
 
-      <div className="w-full flex flex-row items-center gap-3">
+      <div className="w-full flex flex-row items-center gap-3 text-gray-700">
         <input
           aria-disabled
           aria-live="polite"

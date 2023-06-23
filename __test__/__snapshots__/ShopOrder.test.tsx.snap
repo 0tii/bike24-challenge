@@ -143,7 +143,7 @@ exports[`Shop Order Component renders 1`] = `
           </label>
         </div>
         <div
-          class="w-full flex flex-row items-center gap-3"
+          class="w-full flex flex-row items-center gap-3 text-gray-700"
         >
           <input
             aria-disabled="true"
@@ -308,7 +308,7 @@ exports[`Shop Order Component renders 1`] = `
         </label>
       </div>
       <div
-        class="w-full flex flex-row items-center gap-3"
+        class="w-full flex flex-row items-center gap-3 text-gray-700"
       >
         <input
           aria-disabled="true"
