@@ -6,12 +6,12 @@ exports[`Shopping Cart Component renders 1`] = `
   "baseElement": <body>
     <div>
       <h2
-        class="my-6 font-bold text-4xl"
+        class="my-6 font-bold text-4xl text-center text-gray-700"
       >
         Your orders
       </h2>
       <table
-        class="w-full sm:text-base text-sm overflow-x-auto"
+        class="w-full sm:text-base text-sm overflow-x-auto text-gray-700"
       >
         <thead
           class="sm:text-base text-xs"
@@ -187,7 +187,7 @@ exports[`Shopping Cart Component renders 1`] = `
             </span>
           </div>
           <div
-            class="grid grid-cols-2 font-bold"
+            class="grid grid-cols-2 font-bold text-gray-800"
           >
             <span>
               Gross Total:
@@ -214,7 +214,12 @@ exports[`Shopping Cart Component renders 1`] = `
         >
           <progress
             aria-label="product count progress bar"
-            class="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
+            class="max-w-[150px] 
+            [&::-webkit-progress-bar]:rounded-md 
+            [&::-webkit-progress-value]:rounded-md 
+          [&::-webkit-progress-bar]:bg-slate-300 
+          [&::-moz-progress-bar]:bg-blue-400 [&::-webkit-progress-value]:bg-blue-400
+          "
             max="10"
             value="2"
           />
@@ -230,12 +235,12 @@ exports[`Shopping Cart Component renders 1`] = `
   </body>,
   "container": <div>
     <h2
-      class="my-6 font-bold text-4xl"
+      class="my-6 font-bold text-4xl text-center text-gray-700"
     >
       Your orders
     </h2>
     <table
-      class="w-full sm:text-base text-sm overflow-x-auto"
+      class="w-full sm:text-base text-sm overflow-x-auto text-gray-700"
     >
       <thead
         class="sm:text-base text-xs"
@@ -411,7 +416,7 @@ exports[`Shopping Cart Component renders 1`] = `
           </span>
         </div>
         <div
-          class="grid grid-cols-2 font-bold"
+          class="grid grid-cols-2 font-bold text-gray-800"
         >
           <span>
             Gross Total:
@@ -438,7 +443,12 @@ exports[`Shopping Cart Component renders 1`] = `
       >
         <progress
           aria-label="product count progress bar"
-          class="max-w-[150px] [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400"
+          class="max-w-[150px] 
+            [&::-webkit-progress-bar]:rounded-md 
+            [&::-webkit-progress-value]:rounded-md 
+          [&::-webkit-progress-bar]:bg-slate-300 
+          [&::-moz-progress-bar]:bg-blue-400 [&::-webkit-progress-value]:bg-blue-400
+          "
           max="10"
           value="2"
         />
