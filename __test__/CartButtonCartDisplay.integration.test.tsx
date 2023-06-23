@@ -1,6 +1,6 @@
 import { render, fireEvent, within, getByTestId } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { CartContext, CartContextType } from '@/components/ShoppingCart/CartContext';
+import { CartContext, CartContextType } from '@/components/ShoppingCart/Context/CartContext';
 import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCart';
 import { CartButton } from '@/components/ShoppingCart/CartButton';
 import CartDisplay from '@/components/ShoppingCart/CartDisplay';

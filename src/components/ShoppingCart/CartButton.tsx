@@ -1,5 +1,5 @@
 import ShoppingCartIcon from '@/svg/ShoppingCartIcon';
-import { CartContext } from './CartContext';
+import { CartContext } from './Context/CartContext';
 import { HTMLProps, useContext } from 'react';
 
 interface CartButtonProps extends HTMLProps<HTMLDivElement> {}

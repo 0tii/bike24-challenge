@@ -3,14 +3,14 @@ import { Autocomplete } from '@mui/material';
 import { TextField } from '@mui/material';
 import { Slider } from '@mui/material';
 import { HTMLProps, useContext, useState } from 'react';
-import { CartContext } from './ShoppingCart/CartContext';
+import { CartContext } from './ShoppingCart/Context/CartContext';
 import { toast } from 'react-toastify';
 
-export interface ShopOrderProps extends HTMLProps<HTMLDivElement> {
+export interface ProductSelectorProps extends HTMLProps<HTMLDivElement> {
   products: Product[];
 }
 
-const ShopOrder = ({ products, className, ...props }: ShopOrderProps) => {
+const ProductSelector = ({ products, className, ...props }: ProductSelectorProps) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(0);
 
@@ -122,4 +122,4 @@ const ShopOrder = ({ products, className, ...props }: ShopOrderProps) => {
   );
 };
 
-export default ShopOrder;
+export default ProductSelector;

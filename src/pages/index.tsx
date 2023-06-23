@@ -1,6 +1,6 @@
 import { Product } from '@/types/OrderTypes';
-import ShopOrder from '@/components/ShopOrder';
-import { CartContext } from '@/components/ShoppingCart/CartContext';
+import ProductSelector from '@/components/ProductSelector';
+import { CartContext } from '@/components/ShoppingCart/Context/CartContext';
 import { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -49,7 +49,7 @@ export default function Shop({ products }: ShopProps) {
           <h2 className="mb-6 font-bold text-2xl hidden sm:block">
             Order our high quality products
           </h2>
-          <ShopOrder products={products} />
+          <ProductSelector products={products} />
         </div>
 
         <CartDisplay />

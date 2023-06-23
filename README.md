@@ -20,8 +20,13 @@ If its not present you can install it using your OS-specific package manager, fo
 
 ## Scope of functions
 
-The user is presented a shop page with an option to select a product and amount which he can add to his shopping cart. Each product has a maximum amount that can be purchased, which can not be exceeded.
-The user can navigate to his shopping cart, review and change their order and continue to checkout into limbo.
+- The app is fully responsive.
+- The user is presented a shop page with an option to select a product and amount which he can add to his shopping cart.
+- Each product has a maximum amount that can be purchased, which can not be exceeded.
+- A maximum of 10 products can be added to the cart.
+- The products display their net and gross price.
+- After Checkout the user is presented a success popup.
+- The user can navigate to his shopping cart, review and change their order and continue to checkout into limbo.
 
 ## Organization
 
@@ -67,9 +72,9 @@ This project uses Makefile to abstract away some of the `docker-compose` command
 
 ### SSR
 
-At the moment, this project utilizes SSG, as the data is statically available and can be fetched serverside from the server-local file system.
+~~At the moment, this project utilizes SSG, as the data is statically available and can be fetched serverside from the server-local file system.~~
 
-Once the main workload is done, I will see if I have the time to implement SSR practices, such as an internal provider route for the data.
+The app now uses SSR on the Shop (index) page and fetches the data from an internal API route that provides it with the product data.
 
 ### Testing
 
@@ -97,7 +102,7 @@ For this challenge, getting 100% coverage was not the goal, and would be needles
 
 ### Code Quality
 
-This project leverages multiple methods of aiding in homogenous and predictable code quality
+This project leverages two methods of aiding in homogenous and predictable code quality
 |Tool |Advantage |
 |---|---|
 |ESLint |Linting according to specific rules to enforce homogenous development between team members |
@@ -107,14 +112,18 @@ This project leverages multiple methods of aiding in homogenous and predictable 
 
 This project is (almost) ready-to-deploy. The docker setup was configured to use the `NODE_ENV` environment variable to determine which mode to start in. Currently there are two modes available: `development` and `production`, which can be controlled through a `.env` file. Please make sure you copy the `.env.dist` file, rename it to `.env` and assign either `development` or `production` to the `NODE_ENV` variable.
 
-Given Next is a little finicky with the starting port, the port numbers might have to be adjusted manually in the `Dockerfile`, `docker-compose.yml` and `package.json`, if your deployment provider requires using certain ports.
+You can see the current environment mode printed first in the container logs (`make log` / `make logl`).
+
+Please also make sure to assign the `HOST` variable the current app host, otherwise the data fetch will fail.
+
+Given Next is a little finicky with the starting port, the port numbers might have to be adjusted manually in the `Dockerfile`, `docker-compose.yml` (to be found in `docker/`) and `package.json`, if your deployment provider requires using certain ports.
 
 From there on, handling the container is identical between dev and prod. Refer to [Container Interaction](#container) to see which commands are available.
 
 **_In order to deploy to production_**:
 
 1. Make sure that a .env file exists in the project root
-2. Set the `NODE_ENV` variable to `production`
+2. Set the `NODE_ENV` variable to `production` and assign the `HOST` variable the appropriate host.
 3. (optionally) adjust the port in the `Dockerfile`, `docker-compose.yml` and `package.json`
 4. Build the container using `make build` (optionally tag it)
 5. Push the container image to your preferred Registry
