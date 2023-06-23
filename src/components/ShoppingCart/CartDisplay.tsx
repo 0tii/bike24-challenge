@@ -26,6 +26,7 @@ export const CartDisplay = () => {
                 <button
                   className="text-white text-xl mr-5 py-3"
                   aria-label="close cart button"
+                  data-testid="close-cart-button"
                   onClick={() => cart.setCartOpen(false)}
                 >
                   x

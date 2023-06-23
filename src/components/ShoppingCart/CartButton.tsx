@@ -13,6 +13,7 @@ export const CartButton = ({ onClick, className, ...props }: CartButtonProps) =>
         className="bg-blue-800 hover:bg-blue-700 rounded-md px-8 py-3 w-full"
         onClick={() => shoppingCart?.setCartOpen(true)}
         aria-label="open shopping cart button"
+        data-testid="cart-button"
       >
         <ShoppingCartIcon className="fill-white scale-150 w-full" />
       </button>
