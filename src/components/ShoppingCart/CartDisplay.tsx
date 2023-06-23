@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ShoppingCart from './ShoppingCart';
 import { CartButton } from './CartButton';
+import { CartContext } from './CartContext';
 
 export const CartDisplay = () => {
-  const [expanded, setExpanded] = useState(false);
+  const cart = useContext(CartContext);
 
   return (
     <>
-      <CartButton onClick={() => setExpanded((exp) => !exp)} aria-label="shopping cart button" />
-      {expanded && (
+      {cart?.cartOpen && (
         <>
           <div // backdrop
             className="absolute h-screen w-screen top-0 left-0 bg-[rgba(58,69,92,0.46)]"
@@ -26,7 +26,7 @@ export const CartDisplay = () => {
                 <button
                   className="text-white text-xl mr-5 py-3"
                   aria-label="close cart button"
-                  onClick={() => setExpanded((exp) => !exp)}
+                  onClick={() => cart.setCartOpen(false)}
                 >
                   x
                 </button>

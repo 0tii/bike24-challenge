@@ -1,4 +1,4 @@
-import CartDisplay from '../ShoppingCart/CartDisplay';
+import { CartButton } from '../ShoppingCart/CartButton';
 
 export const Header = () => {
   return (
@@ -8,7 +8,7 @@ export const Header = () => {
         <span className="text-orange-300">24</span>
       </h1>
       <div className="mr-4">
-        <CartDisplay />
+        <CartButton />
       </div>
     </div>
   );
