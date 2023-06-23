@@ -52,7 +52,7 @@ I thought about using Redux to manage shopping cart state globally, but I decide
 | Jest             | Arguably the most prominent testing library for frontend unit tests in the JS/TS environment.                                                                                   |
 | @testing-library | Jest without it would not be the same!                                                                                                                                          |
 
-###<a id="container"></a> Container interaction
+### <a id="container"></a> Container interaction
 
 This project uses Makefile to abstract away some of the `docker-compose` commands:
 
