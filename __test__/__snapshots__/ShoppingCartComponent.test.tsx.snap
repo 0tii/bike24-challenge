@@ -6,7 +6,7 @@ exports[`Shopping Cart Component renders 1`] = `
   "baseElement": <body>
     <div>
       <h2
-        class="my-3 font-bold text-4xl"
+        class="my-6 font-bold text-4xl"
       >
         Your orders
       </h2>
@@ -213,7 +213,7 @@ exports[`Shopping Cart Component renders 1`] = `
   </body>,
   "container": <div>
     <h2
-      class="my-3 font-bold text-4xl"
+      class="my-6 font-bold text-4xl"
     >
       Your orders
     </h2>

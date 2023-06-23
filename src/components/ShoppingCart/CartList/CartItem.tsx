@@ -10,7 +10,7 @@ export interface CartItemProps {
 }
 
 export const CartItem = ({ product, quantity }: CartItemProps) => {
-  const totalPrice = (quantity * product.price).toFixed(2);
+  const grossItemPrice = product.price + (product.price * product.taxRate) / 100;
   const shoppingCart = useContext(CartContext);
 
   const onDelete = () => {
@@ -26,7 +26,8 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
       <td className="sm:py-2 py-1">{product.productName}</td>
       <td className="sm:py-2 py-1">{quantity}</td>
       <td className="sm:py-2 py-1">{product.price}€</td>
-      <td className="sm:py-2 py-1">{totalPrice}€</td>
+      <td className="sm:py-2 py-1">{grossItemPrice.toFixed(2)}€</td>
+      <td className="sm:py-2 py-1">{(grossItemPrice * quantity).toFixed(2)}€</td>
       <td className="sm:py-2 py-1">
         <div className="flex justify-end">
           <button
