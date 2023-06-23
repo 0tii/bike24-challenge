@@ -6,6 +6,7 @@ import { CartContext } from '@/components/ShoppingCart/CartContext';
 import { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import CheckoutConfirmation from '@/components/ShoppingCart/CheckoutConfirmation';
 
 export interface ShopProps {
   products: Product[];
@@ -46,6 +47,9 @@ export default function Shop({ products }: ShopProps) {
           </h2>
           <ShopOrder products={products} />
         </div>
+        {context?.orderConfirmation && (
+          <CheckoutConfirmation onConfirm={() => context?.setOrderConfirmation(false)} />
+        )}
       </main>
     </>
   );

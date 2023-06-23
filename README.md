@@ -25,7 +25,16 @@ The user can navigate to his shopping cart, review and change their order and co
 
 ## Organization
 
-I organized this project using a Trello board in a Scrumban style. I have made the board public: [Trello Orga Board](https://trello.com/invite/b/TMoec0Zp/ATTI5307547e302d5a34ec4620468ff2c7b6F2FAC534/tech-challenge-frontend)
+I organized this project using a Trello board in a Scrumban style. I have made the board public: [Trello Orga Board](https://trello.com/invite/b/TMoec0Zp/ATTI5307547e302d5a34ec4620468ff2c7b6F2FAC534/tech-challenge-frontend) for you to check out.
+
+For the proper experience, and to easily link each task number to the respective feature branch in the commit history, using one of these chrome extensions is highly useful
+
+- [Trello Card Numbers](https://chrome.google.com/webstore/detail/trello-card-numbers/kadpkdielickimifpinkknemjdipghaf)
+- [Trello Card Numbers Plus](https://chrome.google.com/webstore/detail/trello-card-numbers-plus/ncibjlmfhjcjnphnpphgphbflpdpliei) (This is the one I use, but I can understand suspicion due to the low amount of users.)
+
+Using these extensions one gets the respective ticket number in the card and can then relate them to the feature branches.
+
+![screenshot](https://i.imgur.com/cDakO4f.png)
 
 ## Technologies
 
