@@ -1,5 +1,5 @@
 import { Product } from '@/types/OrderTypes';
-import ProductSelector from '@/components/ShopOrder';
+import ProductSelector from '@/components/ProductSelector';
 import { CartContext } from '@/components/ShoppingCart/Context/CartContext';
 import { useContext, useEffect } from 'react';
 import Head from 'next/head';

@@ -2,7 +2,7 @@ import { render, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CartContext, CartContextType } from '@/components/ShoppingCart/Context/CartContext';
 import ShoppingCartComponent from '@/components/ShoppingCart/ShoppingCart';
-import ShopOrderComponent from '@/components/ShopOrder';
+import ShopOrderComponent from '@/components/ProductSelector';
 
 describe('Shop Order and Shopping Cart', () => {
   it('adds an item from the shop order to the shopping cart', () => {
