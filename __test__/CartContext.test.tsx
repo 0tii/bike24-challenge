@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ShopOrderComponent from '@/components/ShopOrder';
 import {
   CartContext,
   CartContextType,
@@ -9,7 +8,6 @@ import {
 } from '@/components/ShoppingCart/CartContext';
 import { useContext, useEffect } from 'react';
 import { Product } from '@/types/OrderTypes';
-import { comment } from 'postcss';
 
 describe('The Cart Context', () => {
   it('should add items to the cart', () => {
@@ -153,6 +151,10 @@ const addToCartMock = jest.fn((product, amount) => {
   mockCartContext.cartItems.push({ product: product, quantity: amount });
 });
 
+const setOrderConfirmationMock = jest.fn((val) => (mockCartContext.orderConfirmation = val));
+
+const setCartOpenMock = jest.fn((val) => (mockCartContext.cartOpen = val));
+
 const mockCartContext: CartContextType = {
   cartItems: [
     { product: mockProducts[1], quantity: 2 },
@@ -164,4 +166,8 @@ const mockCartContext: CartContextType = {
   modifyItem: jest.fn(),
   loadCart: jest.fn(),
   calculateTotals: jest.fn(),
+  orderConfirmation: false,
+  setOrderConfirmation: setOrderConfirmationMock,
+  cartOpen: false,
+  setCartOpen: setCartOpenMock,
 };

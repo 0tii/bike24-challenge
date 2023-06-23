@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ShopOrderComponent from '@/components/ShopOrder';
-import { CartContext, CartContextType } from '@/components/ShoppingCart/CartContext';
+import { CartContext } from '@/components/ShoppingCart/CartContext';
 
 describe('Shop Order Component', () => {
   it('renders', () => {
@@ -59,6 +59,10 @@ describe('Shop Order Component', () => {
           removeFromCart: () => {},
           loadCart: () => {},
           modifyItem: () => {},
+          cartOpen: false,
+          setCartOpen: () => {},
+          orderConfirmation: false,
+          setOrderConfirmation: () => {},
         }}
       >
         <ShopOrderComponent products={mockProducts} />
