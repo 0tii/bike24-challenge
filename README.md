@@ -24,6 +24,7 @@ If its not present you can install it using your OS-specific package manager, fo
 - The user is presented a shop page with an option to select a product and amount which he can add to his shopping cart.
 - Each product has a maximum amount that can be purchased, which can not be exceeded.
 - A maximum of 10 products can be added to the cart.
+- The user can see at all times the total price of the cart and the amount of products inside the cart.
 - The products display their net and gross price.
 - After Checkout the user is presented a success popup.
 - The user can navigate to his shopping cart, review and change their order and continue to checkout into limbo.
