@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { Product } from '@/types/OrderTypes';
 import ShopOrder from '@/components/ShopOrder';
 import { CartContext } from '@/components/ShoppingCart/CartContext';
@@ -8,6 +6,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import CheckoutConfirmation from '@/components/ShoppingCart/CheckoutConfirmation';
 import CartDisplay from '@/components/ShoppingCart/CartDisplay';
+import { iceImage } from '@/data/ice_image';
 
 export interface ShopProps {
   products: Product[];
@@ -36,6 +35,8 @@ export default function Shop({ products }: ShopProps) {
         <div className="w-full max-w-screen h-[35%] max-h-[200px] sm:max-h-[400px] overflow-hidden flex items-center pt-32">
           <Image
             src="/images/icy.jpg"
+            placeholder="blur"
+            blurDataURL={iceImage.dataUrl}
             alt="iceberg"
             width={4032}
             height={3024}
@@ -61,19 +62,17 @@ export default function Shop({ products }: ShopProps) {
   );
 }
 
-// We use SSG for now since we have the data available locally
-// If i find the time I will refactor this to use a more traditional approach of SSR fetching from an API route
-export function getStaticProps() {
-  const jsonFileContent = fs.readFileSync(
-    path.join(process.cwd(), 'src/data/products.json'),
-    'utf-8'
-  );
-  const productList = JSON.parse(jsonFileContent);
-  1;
+export async function getServerSideProps() {
+  try {
+    const res = await fetch(`${process.env.HOST}/api/v1/data`);
+    const data = await res.json();
 
-  return {
-    props: {
-      products: productList,
-    },
-  };
+    return {
+      props: {
+        products: data,
+      },
+    };
+  } catch (err) {
+    console.error(err);
+  }
 }

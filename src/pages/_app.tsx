@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
       else setNotificationPosition('top-right');
     };
 
-    setNotificationPosition(window.innerWidth < 600 ? 'bottom-center' : 'top-right');
+    setNotificationPosition(window.innerWidth < 600 ? 'bottom-center' : 'top-left');
 
     window.addEventListener('resize', handleResize);
 

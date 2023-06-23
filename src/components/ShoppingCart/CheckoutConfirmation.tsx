@@ -26,6 +26,7 @@ export const CheckoutConfirmation = ({ onConfirm }: CheckoutConfirmationProps) =
             className="p-3 bg-gray-200 rounded-md hover:bg-gray-300"
             onClick={() => {
               onConfirm();
+              cart?.setCartOpen(false);
               cart?.clearCart();
             }}
           >
