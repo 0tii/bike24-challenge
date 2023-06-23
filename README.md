@@ -98,7 +98,7 @@ Or for running test and displaying the test coverage:
 npm run coverage
 ```
 
-For this challenge, getting 100% coverage was not the goal, and would be needlessly time consuming for the scope of this project.
+For this challenge, getting 100% coverage was not the goal, and would be needlessly time consuming for the scope of the project.
 
 ### Code Quality
 

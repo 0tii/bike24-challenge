@@ -7,7 +7,7 @@ interface CartItemListProps {
 
 export const CartItemList = ({ shoppingCart }: CartItemListProps) => {
   return (
-    <table className="w-full sm:text-base text-sm overflow-x-auto">
+    <table className="w-full sm:text-base text-sm overflow-x-auto text-gray-700">
       <thead className="sm:text-base text-xs">
         <tr>
           <th className="text-start">Product</th>

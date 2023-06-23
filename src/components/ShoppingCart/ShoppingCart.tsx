@@ -22,7 +22,7 @@ const ShoppingCart = ({}: ShoppingCartProps) => {
 
   return (
     <>
-      <h2 className="my-6 font-bold text-4xl">Your orders</h2>
+      <h2 className="my-6 font-bold text-4xl text-center text-gray-700">Your orders</h2>
 
       <CartItemList shoppingCart={shoppingCart} />
 

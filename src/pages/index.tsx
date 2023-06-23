@@ -46,7 +46,7 @@ export default function Shop({ products }: ShopProps) {
         </div>
 
         <div className="flex flex-col items-center px-4 w-full max-w-4xl mt-8 sm:mt-4 min-h-60%">
-          <h2 className="mb-6 font-bold text-2xl hidden sm:block">
+          <h2 className="mb-6 font-bold text-2xl hidden sm:block text-gray-700">
             Order our high quality products
           </h2>
           <ProductSelector products={products} />
