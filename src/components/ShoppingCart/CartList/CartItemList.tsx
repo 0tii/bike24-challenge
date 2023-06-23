@@ -14,7 +14,8 @@ export const CartItemList = ({ shoppingCart }: CartItemListProps) => {
           <th className="text-start max-w-[35px] sm:max-w-auto">
             <div className="whitespace-nowrap truncate w-full">Quantity</div>
           </th>
-          <th className="text-start">Price</th>
+          <th className="text-start">Net</th>
+          <th className="text-start">Gross</th>
           <th className="text-start">Total</th>
           <th className="text-start"></th>
         </tr>

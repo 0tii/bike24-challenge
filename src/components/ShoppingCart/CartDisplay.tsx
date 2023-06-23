@@ -10,10 +10,12 @@ export const CartDisplay = () => {
       <CartButton onClick={() => setExpanded((exp) => !exp)} aria-label="shopping cart button" />
       {expanded && (
         <>
-          <div className="absolute h-screen w-screen top-0 left-0 bg-[rgba(61,61,61,0.34)]" />
+          <div // backdrop
+            className="absolute h-screen w-screen top-0 left-0 bg-[rgba(58,69,92,0.46)]"
+          />
 
           <div
-            className="slidein z-10 top-0 right-0 absolute md:w-[60%] md:max-w-[650px] w-full min-w-[300px] h-full bg-white overflow-y-auto overflow-x-hidden shadow-2xl"
+            className="slidein z-10 top-0 right-0 absolute md:w-[60%] md:max-w-[750px] w-full min-w-[350px] h-full bg-white overflow-y-auto overflow-x-hidden shadow-2xl"
             aria-label="shopping cart screen"
           >
             <div className="flex flex-col">

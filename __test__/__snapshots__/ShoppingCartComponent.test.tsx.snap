@@ -6,7 +6,7 @@ exports[`Shopping Cart Component renders 1`] = `
   "baseElement": <body>
     <div>
       <h2
-        class="my-3 font-bold text-4xl"
+        class="my-6 font-bold text-4xl"
       >
         Your orders
       </h2>
@@ -34,7 +34,12 @@ exports[`Shopping Cart Component renders 1`] = `
             <th
               class="text-start"
             >
-              Price
+              Net
+            </th>
+            <th
+              class="text-start"
+            >
+              Gross
             </th>
             <th
               class="text-start"
@@ -67,7 +72,13 @@ exports[`Shopping Cart Component renders 1`] = `
             <td
               class="sm:py-2 py-1"
             >
-              15.52
+              8.30
+              €
+            </td>
+            <td
+              class="sm:py-2 py-1"
+            >
+              16.61
               €
             </td>
             <td
@@ -113,7 +124,13 @@ exports[`Shopping Cart Component renders 1`] = `
             <td
               class="sm:py-2 py-1"
             >
-              472.50
+              10.11
+              €
+            </td>
+            <td
+              class="sm:py-2 py-1"
+            >
+              505.57
               €
             </td>
             <td
@@ -213,7 +230,7 @@ exports[`Shopping Cart Component renders 1`] = `
   </body>,
   "container": <div>
     <h2
-      class="my-3 font-bold text-4xl"
+      class="my-6 font-bold text-4xl"
     >
       Your orders
     </h2>
@@ -241,7 +258,12 @@ exports[`Shopping Cart Component renders 1`] = `
           <th
             class="text-start"
           >
-            Price
+            Net
+          </th>
+          <th
+            class="text-start"
+          >
+            Gross
           </th>
           <th
             class="text-start"
@@ -274,7 +296,13 @@ exports[`Shopping Cart Component renders 1`] = `
           <td
             class="sm:py-2 py-1"
           >
-            15.52
+            8.30
+            €
+          </td>
+          <td
+            class="sm:py-2 py-1"
+          >
+            16.61
             €
           </td>
           <td
@@ -320,7 +348,13 @@ exports[`Shopping Cart Component renders 1`] = `
           <td
             class="sm:py-2 py-1"
           >
-            472.50
+            10.11
+            €
+          </td>
+          <td
+            class="sm:py-2 py-1"
+          >
+            505.57
             €
           </td>
           <td
