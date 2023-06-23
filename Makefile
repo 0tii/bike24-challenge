@@ -6,7 +6,7 @@ define exec_cli
 endef
 
 define dc
-    docker compose -f docker/docker-compose.yml $1 $2 $3 $4
+    docker compose -f docker/docker-compose.yml $1 $2 $3 $4 $5
 endef
 
 define up
@@ -36,4 +36,4 @@ log:
 
 .PHONY: logl
 logl: 
-	@$(call dc,logs,web,--follow)
+	@$(call dc,logs,web,--follow,|| true)
