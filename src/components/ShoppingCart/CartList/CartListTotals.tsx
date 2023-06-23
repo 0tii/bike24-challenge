@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CartContextType, CartTotals } from '../CartContext';
+import { CartContextType, CartTotals } from '../Context/CartContext';
 
 interface CartListTotalsProps {
   shoppingCart: CartContextType | null;

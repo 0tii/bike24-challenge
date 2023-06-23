@@ -1,6 +1,6 @@
 import { Product } from '@/types/OrderTypes';
 import { useContext } from 'react';
-import { CartContext } from '../CartContext';
+import { CartContext } from '../Context/CartContext';
 import TrashBinIcon from '@/svg/TrashBinIcon';
 import { toast } from 'react-toastify';
 

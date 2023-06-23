@@ -1,6 +1,6 @@
 import { Product } from '@/types/OrderTypes';
-import { useContext, useEffect, useState } from 'react';
-import { CartContext, CartTotals } from './CartContext';
+import { useContext } from 'react';
+import { CartContext } from './Context/CartContext';
 import { constants } from '@/cfg/config';
 import CartItemList from './CartList/CartItemList';
 import CartListTotals from './CartList/CartListTotals';

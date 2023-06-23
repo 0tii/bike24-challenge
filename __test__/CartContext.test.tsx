@@ -5,7 +5,7 @@ import {
   CartContextType,
   CartEntry,
   CartProvider,
-} from '@/components/ShoppingCart/CartContext';
+} from '@/components/ShoppingCart/Context/CartContext';
 import { useContext, useEffect } from 'react';
 import { Product } from '@/types/OrderTypes';
 

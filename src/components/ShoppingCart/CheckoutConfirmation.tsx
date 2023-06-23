@@ -1,6 +1,6 @@
 import ShopSuccessIcon from '@/svg/ShopSuccessIcon';
 import { useContext } from 'react';
-import { CartContext } from './CartContext';
+import { CartContext } from './Context/CartContext';
 
 interface CheckoutConfirmationProps {
   onConfirm: () => void;

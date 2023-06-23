@@ -1,4 +1,4 @@
-import { CartProvider } from '@/components/ShoppingCart/CartContext';
+import { CartProvider } from '@/components/ShoppingCart/Context/CartContext';
 import { ToastContainer, ToastPosition } from 'react-toastify';
 import '@/styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
