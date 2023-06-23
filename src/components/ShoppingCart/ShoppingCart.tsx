@@ -37,7 +37,7 @@ const ShoppingCart = ({}: ShoppingCartProps) => {
 
   return (
     <>
-      <h2 className="my-3 font-bold text-4xl">Your orders</h2>
+      <h2 className="my-6 font-bold text-4xl">Your orders</h2>
       <CartItemList shoppingCart={shoppingCart} />
       {shoppingCart?.cartItems.length === 0 && (
         <div className="flex flex-col items-center my-8 text-gray-300 font-bold text-[2rem]">
