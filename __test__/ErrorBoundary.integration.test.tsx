@@ -5,6 +5,9 @@ import ErrorComponent from '@/components/ErrorBoundary/ErrorComponent';
 
 describe('Error Boundary', () => {
   it('displays fallback component on error', () => {
+    // we expect the error, hence we dont need it printed to console.
+    const exceptionSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
     const { getByText } = render(
       <ErrorBoundary fallback={<ErrorComponent />}>
         <DummyComponent />
@@ -13,6 +16,8 @@ describe('Error Boundary', () => {
 
     const text = getByText('Oops');
     expect(text).toBeInTheDocument();
+
+    exceptionSpy.mockRestore();
   });
 
   const DummyComponent = () => {
