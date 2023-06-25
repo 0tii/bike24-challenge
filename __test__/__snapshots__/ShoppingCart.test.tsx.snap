@@ -201,7 +201,7 @@ exports[`Shopping Cart Component renders 1`] = `
         </div>
       </div>
       <div
-        class="flex flex-row justify-between items-end"
+        class="flex flex-row justify-between items-end pb-3"
       >
         <button
           aria-label="clear cart button"
@@ -430,7 +430,7 @@ exports[`Shopping Cart Component renders 1`] = `
       </div>
     </div>
     <div
-      class="flex flex-row justify-between items-end"
+      class="flex flex-row justify-between items-end pb-3"
     >
       <button
         aria-label="clear cart button"

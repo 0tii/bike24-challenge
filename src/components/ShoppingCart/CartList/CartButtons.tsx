@@ -23,7 +23,7 @@ export const CartButtons = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between items-end">
+    <div className="flex flex-row justify-between items-end pb-3">
       <button
         aria-label="clear cart button"
         className="bg-gray-500 hover:bg-gray-600 text-white rounded-md py-3 px-5"
