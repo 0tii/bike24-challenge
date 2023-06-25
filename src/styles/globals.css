@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+}
+
+p {
+  color: rgb(66, 66, 66);
+}
+
+@media screen and (width > 50em) {
+  .slidein {
+    animation: slide-in 0.3s ease-in;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+@media screen and (max-width: 33em) {
+  table,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    padding: 0.5em 2em 1em;
+    position: relative;
+  }
+  tr:nth-child(odd) {
+    background-color: rgb(236, 248, 255);
+  }
+  td:nth-child(1)::before {
+    content: 'Product: ';
+    font-weight: 600;
+  }
+  td:nth-child(2)::before {
+    content: 'Quantity: ';
+    font-weight: 600;
+  }
+  td:nth-child(3)::before {
+    content: 'Net: ';
+    font-weight: 600;
+  }
+  td:nth-child(4)::before {
+    content: 'Gross: ';
+    font-weight: 600;
+  }
+  td:nth-child(5)::before {
+    content: 'Total: ';
+    font-weight: 600;
+  }
+  td:nth-child(6) {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
