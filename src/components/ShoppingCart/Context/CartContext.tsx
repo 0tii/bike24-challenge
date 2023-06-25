@@ -101,6 +101,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     saveCart(true);
   };
 
+  /**
+   * Serializes the cart and saves it to local storage
+   * @param clear whether the cart should be cleared
+   */
   const saveCart = (clear = false) => {
     if (clear) return localStorage.removeItem('cart');
     localStorage.setItem('cart', Buffer.from(JSON.stringify(cartItems), 'utf8').toString('base64'));
